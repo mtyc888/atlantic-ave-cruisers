@@ -10,7 +10,7 @@ import SiteLayout from '@/layouts/site-layout';
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 /** Public marketing pages that render inside the site chrome. */
-const SITE_PAGES = ['welcome', 'rates', 'join', 'gallery', 'about'];
+const SITE_PAGES = ['welcome', 'rates', 'join', 'gallery', 'waiver', 'about'];
 
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),

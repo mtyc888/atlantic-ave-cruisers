@@ -316,7 +316,9 @@
     height: 2.5px;
     border-radius: 2px;
     background: currentColor;
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
 }
 
 .nav.menu-open .burger i:nth-child(1) {
@@ -338,7 +340,11 @@
     align-items: center;
     overflow: hidden;
     background:
-        radial-gradient(70% 90% at 90% 10%, rgba(229, 163, 60, 0.14), transparent 55%),
+        radial-gradient(
+            70% 90% at 90% 10%,
+            rgba(229, 163, 60, 0.14),
+            transparent 55%
+        ),
         var(--cream);
     color: var(--navy-deep);
     padding: 150px 0 120px;
@@ -741,7 +747,7 @@
 }
 
 .ratetable thead th {
-    padding: 18px 20px;
+    padding: 16px 28px;
     background: var(--navy-deep);
     color: var(--cream);
     font-family: var(--mono);
@@ -749,69 +755,31 @@
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    white-space: nowrap;
 }
 
-.ratetable thead th em {
-    display: block;
-    margin-top: 3px;
-    font-style: normal;
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: none;
-    opacity: 0.6;
+.ratetable thead th:last-child,
+.ratetable tbody td {
+    text-align: right;
 }
 
 .ratetable tbody tr + tr {
     border-top: 1px solid var(--line);
 }
 
-.ratetable tbody tr.is-popular {
-    background: rgba(229, 163, 60, 0.1);
-}
-
 .ratetable tbody th {
-    padding: 18px 20px;
-    font-weight: 400;
-}
-
-.rt-name {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    padding: 20px 28px;
     font-family: var(--display);
-    font-size: 18px;
+    font-weight: 400;
+    font-size: 21px;
     text-transform: uppercase;
     letter-spacing: 0.01em;
 }
 
-.rt-name b {
-    padding: 4px 9px;
-    border-radius: 999px;
-    background: var(--gold);
-    color: var(--navy-deep);
-    font-family: var(--mono);
-    font-size: 9.5px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
-.rt-spec {
-    display: block;
-    margin-top: 5px;
-    font-family: var(--mono);
-    font-size: 11.5px;
-    letter-spacing: 0.04em;
-    opacity: 0.62;
-}
-
 .ratetable tbody td {
-    padding: 18px 20px;
+    padding: 20px 28px;
     font-family: var(--mono);
     font-weight: 600;
-    font-size: 22px;
+    font-size: 26px;
     color: var(--navy);
     white-space: nowrap;
 }
@@ -852,46 +820,25 @@
 }
 
 .rl-name {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    font-family: var(--display);
-    font-size: 19px;
-    text-transform: uppercase;
-}
-
-.rl-name b {
-    padding: 4px 9px;
-    border-radius: 999px;
-    background: var(--gold);
-    color: var(--navy-deep);
-    font-family: var(--mono);
-    font-size: 9.5px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-}
-
-.rl-spec {
     flex: 1;
-    font-family: var(--mono);
-    font-size: 12px;
-    opacity: 0.6;
+    font-family: var(--display);
+    font-size: 20px;
+    text-transform: uppercase;
 }
 
 .rl-price b {
     font-family: var(--mono);
     font-weight: 600;
-    font-size: 24px;
+    font-size: 26px;
     color: var(--navy);
 }
 
-.rl-price em {
-    font-style: normal;
+.rate-list-note {
+    margin-top: 20px;
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
     opacity: 0.6;
-    margin-left: 4px;
 }
 
 .rides {
@@ -899,585 +846,688 @@
     color: var(--cream);
     padding: 110px 0;
 }
-
 .rides-head {
-    display: grid;
     grid-template-columns: 1fr auto;
     align-items: end;
     gap: 40px;
     margin-bottom: 48px;
+    display: grid;
 }
-
 .rides-head p {
-    max-width: 38ch;
     opacity: 0.85;
+    max-width: 38ch;
     padding-bottom: 8px;
 }
-
 .chart {
     background: var(--navy-deep);
-    border: 2px solid rgba(248, 241, 228, 0.28);
-    border-radius: 16px;
-    overflow: hidden;
-    /* Leaflet gives its panes z-index 400-700 and its controls 1000, which
-       would otherwise beat the fixed nav. Confining them to a stacking
-       context here keeps the whole map below the header. */
-    position: relative;
     z-index: 0;
+    border: 2px solid #f8f1e447;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
 }
-
-/* ---------- leaflet map ---------- */
 .ridesmap {
-    height: 460px;
-    width: 100%;
     background: var(--navy-deep);
+    width: 100%;
+    height: 460px;
     font-family: var(--body);
 }
-
-/* Holds the same space before the client-only map mounts, so nothing jumps. */
 .ridesmap-idle {
     display: block;
 }
-
 .ridesmap .leaflet-control-attribution {
-    background: rgba(15, 49, 73, 0.82);
-    color: rgba(248, 241, 228, 0.6);
+    color: #f8f1e499;
     font-family: var(--mono);
+    background: #0f3149d1;
     font-size: 10px;
 }
-
 .ridesmap .leaflet-control-attribution a {
-    color: rgba(248, 241, 228, 0.85);
+    color: #f8f1e4d9;
 }
-
 .ridesmap .leaflet-bar a {
     background: var(--navy-deep);
     color: var(--cream);
     border-bottom-color: var(--line-light);
 }
-
 .ridesmap .leaflet-bar a:hover {
     background: var(--navy);
     color: #fff;
 }
-
 .ridesmap .leaflet-tooltip.stop-label {
-    background: transparent;
-    border: 0;
     box-shadow: none;
-    padding: 0;
     color: var(--cream);
     font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-shadow: 0 1px 3px rgba(6, 24, 38, 0.95);
+    text-shadow: 0 1px 3px #061826f2;
     white-space: nowrap;
+    background: 0 0;
+    border: 0;
+    padding: 0;
+    font-size: 11px;
+    font-weight: 600;
 }
-
 .ridesmap .leaflet-tooltip.stop-label.on {
     color: var(--gold);
     font-size: 12px;
 }
-
 .ridesmap .leaflet-tooltip.stop-label.shop {
-    font-size: 10px;
     letter-spacing: 0.14em;
     opacity: 0.7;
+    font-size: 10px;
 }
-
-.ridesmap .leaflet-tooltip.stop-label::before {
+.ridesmap .leaflet-tooltip.stop-label:before {
     display: none;
 }
-
 .ridesmap .leaflet-interactive {
     cursor: pointer;
 }
-
 .stoplist {
-    display: grid;
+    border-top: 1px solid var(--line-light);
     grid-template-columns: repeat(6, 1fr);
     gap: 8px;
     padding: 16px;
-    border-top: 1px solid var(--line-light);
+    display: grid;
 }
-
 .stoplist button {
-    display: flex;
+    border: 1px solid var(--line-light);
+    text-align: left;
+    border-radius: 10px;
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
     padding: 12px 14px;
-    border: 1px solid var(--line-light);
-    border-radius: 10px;
     font-size: 13.5px;
     font-weight: 600;
-    text-align: left;
     transition:
-        border-color 0.2s ease,
-        background-color 0.2s ease;
+        border-color 0.2s,
+        background-color 0.2s;
+    display: flex;
 }
-
 .stoplist button:hover {
-    border-color: rgba(248, 241, 228, 0.45);
+    border-color: #f8f1e473;
 }
-
 .stoplist button em {
     font-family: var(--mono);
-    font-style: normal;
-    font-size: 11px;
     opacity: 0.6;
+    font-size: 11px;
+    font-style: normal;
 }
-
 .stoplist button.on {
     border-color: var(--gold);
-    background: rgba(229, 163, 60, 0.12);
     color: var(--gold);
+    background: #e5a33c1f;
 }
-
 .stoplist button.on em {
     opacity: 1;
 }
-
 .chart-detail {
-    display: grid;
-    grid-template-columns: 1fr auto auto;
-    gap: 40px;
-    align-items: center;
-    padding: 26px 32px;
     border-top: 1px solid var(--line-light);
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 40px;
+    padding: 26px 32px;
+    display: grid;
 }
-
 .cd-name {
     font-family: var(--display);
-    font-size: 23px;
     text-transform: uppercase;
     color: #fff;
+    font-size: 23px;
 }
-
 .cd-note {
-    font-size: 14.5px;
     opacity: 0.82;
     max-width: 52ch;
     margin-top: 4px;
+    font-size: 14.5px;
 }
-
 .cd-k {
     font-family: var(--mono);
-    font-size: 10.5px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     opacity: 0.6;
+    font-size: 10.5px;
 }
-
 .cd-v {
     font-family: var(--mono);
-    font-weight: 600;
-    font-size: 24px;
     color: var(--gold);
+    font-size: 24px;
+    font-weight: 600;
 }
-
 .next {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
+    border: 1px solid var(--line-light);
+    background: #f8f1e40f;
+    border-radius: 14px;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
     margin-top: 40px;
     padding: 24px 32px;
-    background: rgba(248, 241, 228, 0.06);
-    border: 1px solid var(--line-light);
-    border-radius: 14px;
+    display: flex;
 }
-
 .next b {
-    display: block;
     font-family: var(--display);
-    font-weight: 400;
-    font-size: 20px;
     text-transform: uppercase;
     color: #fff;
     margin-top: 6px;
+    font-size: 20px;
+    font-weight: 400;
+    display: block;
 }
-
 .rides .btn {
     border-color: var(--navy-deep);
-    box-shadow: 3px 3px 0 rgba(6, 24, 38, 0.9);
+    box-shadow: 3px 3px #061826e6;
 }
-
-/* ---------- standalone pages ---------- */
-/* Offsets the fixed nav, which is solid (62px tall) on every page but home,
-   so a dark section never slides under the bar's dark type. */
 .page {
     padding-top: 62px;
 }
-
-/* ---------- homepage teasers ---------- */
 .teaser {
     padding: 104px 0;
 }
-
 .teaser-cream {
     background: var(--cream);
 }
-
 .teaser-navy {
     background: var(--navy);
     color: var(--cream);
 }
-
 .teaser-head {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 32px;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
     margin-bottom: 44px;
+    display: flex;
 }
-
 .teaser-head .h2 {
     margin-bottom: 0;
 }
-
 .teaser-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
     font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    padding-bottom: 5px;
     border-bottom: 2px solid var(--gold);
-    transition: gap 0.2s ease;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: gap 0.2s;
+    display: inline-flex;
 }
-
-.teaser-more::after {
+.teaser-more:after {
     content: '→';
 }
-
 .teaser-more:hover {
     gap: 14px;
 }
-
 .ride-preview {
-    display: grid;
     grid-template-columns: 1.1fr 0.9fr;
-    gap: 28px;
     align-items: start;
+    gap: 28px;
+    display: grid;
 }
-
 .ride-week {
-    padding: 30px 32px 34px;
-    background: rgba(248, 241, 228, 0.06);
     border: 1px solid var(--line-light);
+    background: #f8f1e40f;
     border-radius: 16px;
+    padding: 30px 32px 34px;
 }
-
 .ride-week b {
-    display: block;
     font-family: var(--display);
-    font-weight: 400;
-    font-size: clamp(1.9rem, 3.6vw, 2.6rem);
-    line-height: 1.05;
     text-transform: uppercase;
     color: #fff;
     margin-top: 10px;
+    font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.05;
+    display: block;
 }
-
 .ride-week p {
-    margin: 12px 0 26px;
-    max-width: 40ch;
-    font-size: 15px;
     opacity: 0.85;
+    max-width: 40ch;
+    margin: 12px 0 26px;
+    font-size: 15px;
 }
-
 .ride-stops {
-    display: grid;
     gap: 2px;
+    display: grid;
 }
-
 .ride-stops li {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 14px;
-    padding: 13px 18px;
     border: 1px solid var(--line-light);
     border-radius: 10px;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 14px;
+    padding: 13px 18px;
     font-size: 14.5px;
+    display: flex;
 }
-
 .ride-stops li.on {
     border-color: var(--gold);
-    background: rgba(229, 163, 60, 0.12);
     color: var(--gold);
+    background: #e5a33c1f;
 }
-
 .ride-stops em {
     font-family: var(--mono);
-    font-style: normal;
-    font-size: 11.5px;
     opacity: 0.65;
+    font-size: 11.5px;
+    font-style: normal;
 }
-
 .ride-stops li.on em {
     opacity: 1;
 }
-
 .teaser-navy .btn {
     border-color: var(--navy-deep);
-    box-shadow: 3px 3px 0 rgba(6, 24, 38, 0.9);
+    box-shadow: 3px 3px #061826e6;
 }
-
 .photos {
-    padding: 110px 0;
     background: var(--cream);
+    padding: 110px 0;
 }
-
 .photos-head {
-    display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
     gap: 12px;
     margin-bottom: 32px;
+    display: flex;
 }
-
 .grid {
-    display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-auto-rows: 120px;
     grid-auto-flow: dense;
     gap: 14px;
+    display: grid;
 }
-
 .cell {
+    border: 2px solid var(--navy-deep);
     border-radius: 14px;
     overflow: hidden;
-    border: 2px solid var(--navy-deep);
 }
-
 .cell .slot {
-    transition: transform 0.6s ease;
+    transition: transform 0.6s;
 }
-
 .cell:hover .slot {
     transform: scale(1.04);
 }
-
 .cell.wide {
-    grid-column: span 4;
-    grid-row: span 2;
+    grid-area: span 2 / span 4;
 }
-
 .cell.tall {
-    grid-column: span 2;
-    grid-row: span 3;
+    grid-area: span 3 / span 2;
 }
-
 .cell.sq {
-    grid-column: span 2;
-    grid-row: span 2;
+    grid-area: span 2 / span 2;
 }
-
 .why {
-    padding: 90px 0 110px;
     background: var(--cream-2);
     border-top: 2px solid var(--line);
+    padding: 90px 0 110px;
 }
-
 .why-grid {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
     margin-top: 36px;
+    display: grid;
 }
-
 .why-grid > div {
     background: var(--cream-card);
     border: 2px solid var(--navy-deep);
     border-radius: 16px;
     padding: 30px 28px;
-    box-shadow: 5px 5px 0 rgba(28, 74, 102, 0.16);
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+        transform 0.2s,
+        box-shadow 0.2s;
+    box-shadow: 5px 5px #1c4a6629;
 }
-
 .why-grid > div:hover {
     transform: translate(-3px, -3px);
-    box-shadow: 8px 8px 0 rgba(28, 74, 102, 0.2);
+    box-shadow: 8px 8px #1c4a6633;
 }
-
-/* ---------- club sign-up ---------- */
 .signup {
-    padding: 96px 0;
     color: var(--cream);
     background:
-        radial-gradient(90% 120% at 85% 0%, rgba(42, 95, 128, 0.65), transparent 55%),
+        radial-gradient(90% 120% at 85% 0%, #2a5f80a6, transparent 55%),
         var(--navy-deep);
+    padding: 96px 0;
 }
-
 .signup-in {
-    display: grid;
     grid-template-columns: 1fr 420px;
-    gap: 56px;
     align-items: start;
+    gap: 56px;
+    display: grid;
 }
-
 .signup-copy .h2 {
     color: var(--cream);
 }
-
 .signup-copy > p {
+    opacity: 0.85;
     max-width: 42ch;
     font-size: 16px;
-    opacity: 0.85;
 }
-
 .signup-perks {
-    display: grid;
     gap: 10px;
     margin: 28px 0;
+    display: grid;
 }
-
 .signup-perks li {
-    display: flex;
+    opacity: 0.9;
     align-items: baseline;
     gap: 12px;
     font-size: 15px;
-    opacity: 0.9;
+    display: flex;
 }
-
-.signup-perks li::before {
+.signup-perks li:before {
     content: '';
+    background: var(--gold);
+    border-radius: 50%;
     flex: none;
     width: 8px;
     height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
 }
-
 .signup-next {
-    padding-top: 20px;
     border-top: 1px solid var(--line-light);
     font-family: var(--mono);
-    font-size: 13px;
     opacity: 0.8;
+    padding-top: 20px;
+    font-size: 13px;
 }
-
 .signup-next b {
     color: var(--gold);
 }
-
 .signup-card {
-    padding: 30px 30px 34px;
     color: var(--navy-deep);
     background: var(--cream-card);
     border: 2px solid var(--navy-deep);
     border-radius: 18px;
-    box-shadow: 8px 8px 0 rgba(229, 163, 60, 0.9);
+    padding: 30px 30px 34px;
+    box-shadow: 8px 8px #e5a33ce6;
 }
-
 .signup-price {
-    display: flex;
+    border-bottom: 2px solid var(--line);
     align-items: baseline;
     gap: 8px;
-    padding-bottom: 20px;
     margin-bottom: 22px;
-    border-bottom: 2px solid var(--line);
+    padding-bottom: 20px;
+    display: flex;
 }
-
 .signup-price b {
     font-family: var(--mono);
-    font-weight: 600;
-    font-size: 44px;
-    line-height: 1;
     color: var(--navy);
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 1;
 }
-
 .signup-price span {
     font-family: var(--mono);
-    font-size: 12px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     opacity: 0.6;
+    font-size: 12px;
 }
-
 .signup-card label {
-    display: block;
     margin-bottom: 16px;
-}
-
-.signup-card label > span {
     display: block;
-    margin-bottom: 6px;
+}
+.signup-card label > span {
     font-family: var(--mono);
-    font-size: 10.5px;
-    font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     opacity: 0.7;
+    margin-bottom: 6px;
+    font-size: 10.5px;
+    font-weight: 600;
+    display: block;
 }
-
 .signup-card input {
     width: 100%;
-    padding: 13px 15px;
     font-family: var(--body);
-    font-size: 15px;
     color: var(--navy-deep);
-    background: #fff;
     border: 2px solid var(--line);
+    background: #fff;
     border-radius: 10px;
+    padding: 13px 15px;
+    font-size: 15px;
 }
-
 .signup-card input:focus {
-    outline: none;
     border-color: var(--navy-deep);
+    outline: none;
 }
-
 .signup-card label em {
-    display: block;
-    margin-top: 6px;
-    font-style: normal;
-    font-size: 12px;
     opacity: 0.6;
+    margin-top: 6px;
+    font-size: 12px;
+    font-style: normal;
+    display: block;
 }
-
 .signup-card .btn {
     width: 100%;
     margin-top: 6px;
 }
-
 .signup-card .btn:disabled {
     cursor: not-allowed;
     opacity: 0.45;
-    transform: none;
     box-shadow: 3px 3px 0 var(--navy-deep);
+    transform: none;
 }
-
 .signup-fine {
-    margin-top: 14px;
-    font-size: 12px;
     text-align: center;
     opacity: 0.6;
+    margin-top: 14px;
+    font-size: 12px;
 }
-
 .signup-done h3 {
-    margin: 12px 0 10px;
     font-family: var(--display);
-    font-weight: 400;
-    font-size: 30px;
     text-transform: uppercase;
+    margin: 12px 0 10px;
+    font-size: 30px;
+    font-weight: 400;
     line-height: 1.05;
 }
-
 .signup-done p {
-    font-size: 15px;
     opacity: 0.8;
     margin-bottom: 22px;
+    font-size: 15px;
+}
+
+/* ---------- rental waiver ---------- */
+.waiver-page {
+    padding: 96px 0 104px;
+    background: var(--cream);
+}
+
+.waiver-intro {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.waiver-intro p {
+    max-width: 44ch;
+    font-size: 15.5px;
+    opacity: 0.82;
+}
+
+/* The document itself: a sheet of paper on the cream page. */
+.waiver {
+    max-width: 78ch;
+    margin: 0 auto;
+    padding: 56px clamp(24px, 5vw, 64px) 64px;
+    background: #fff;
+    border: 2px solid var(--navy-deep);
+    border-radius: 4px;
+    box-shadow: 8px 8px 0 rgba(28, 74, 102, 0.18);
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.wv-head {
+    text-align: center;
+    padding-bottom: 28px;
+    margin-bottom: 32px;
+    border-bottom: 2px solid var(--navy-deep);
+}
+
+.wv-head h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.wv-sub {
+    margin-top: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+
+.wv-date {
+    max-width: 320px;
+    margin: 26px auto 0;
+    text-align: left;
+}
+
+.wv-block {
+    padding-bottom: 26px;
+    margin-bottom: 26px;
+    border-bottom: 1px solid var(--line);
+}
+
+.wv-block h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.wv-block h2 b {
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--gold);
+}
+
+.wv-block p + p {
+    margin-top: 10px;
+}
+
+.wv-block ul {
+    margin-top: 10px;
+    display: grid;
+    gap: 7px;
+}
+
+.wv-block li {
+    display: flex;
+    gap: 12px;
+}
+
+.wv-block li::before {
+    content: '•';
+    flex: none;
+    color: var(--gold);
+}
+
+.wv-fields {
+    display: grid;
+    gap: 14px;
+    margin: 4px 0 14px;
+}
+
+.wv-field {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.wv-field span {
+    flex: none;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+/* The ruled blank a renter writes on. */
+.wv-field i {
+    flex: 1;
+    min-width: 60px;
+    height: 0;
+    border-bottom: 1px solid rgba(28, 74, 102, 0.45);
+}
+
+.wv-sign {
+    padding-top: 8px;
+}
+
+.wv-sign h3 {
+    margin: 26px 0 12px;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* Printed copy: drop the site chrome and hand over a clean document. */
+@media print {
+    .nav,
+    .foot,
+    .waiver-intro {
+        display: none !important;
+    }
+
+    .page,
+    .waiver-page {
+        padding: 0 !important;
+    }
+
+    .wrap {
+        max-width: none;
+        padding: 0;
+    }
+
+    .aac {
+        background: #fff;
+    }
+
+    /* Scroll reveals never fire before printing, so force everything visible
+       or the sheet comes out blank. */
+    [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .waiver {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        font-size: 11pt;
+        line-height: 1.45;
+    }
+
+    .wv-block {
+        break-inside: avoid;
+    }
 }
 
 /* ---------- about + contact ---------- */
@@ -1614,7 +1664,9 @@ p.is-placeholder,
 
 .foot a {
     opacity: 0.85;
-    transition: opacity 0.2s ease, color 0.2s ease;
+    transition:
+        opacity 0.2s ease,
+        color 0.2s ease;
 }
 
 .foot a:hover {
@@ -1724,7 +1776,9 @@ p.is-placeholder,
         transform: translateY(-8px);
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.25s ease, transform 0.25s ease;
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease;
     }
 
     .nav-links.open {
@@ -1778,41 +1832,11 @@ p.is-placeholder,
         grid-template-columns: 1fr;
     }
 
-    .ratetable thead {
-        display: none;
-    }
-
-    .ratetable tbody tr,
-    .ratetable tbody th {
-        display: block;
-    }
-
-    .ratetable tbody tr {
-        padding: 6px 0 14px;
-    }
-
-    .ratetable tbody th {
-        padding-bottom: 12px;
-    }
-
-    .ratetable tbody td {
-        display: inline-flex;
-        flex-direction: column;
-        gap: 2px;
-        width: calc(33.333% - 14px);
-        padding: 0 0 0 20px;
-        font-size: 19px;
-    }
-
-    /* Header row is hidden, so each price carries its own label. */
-    .ratetable tbody td::before {
-        content: attr(data-label);
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--navy-deep);
-        opacity: 0.55;
+    .ratetable tbody th,
+    .ratetable tbody td,
+    .ratetable thead th {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .contact-grid {
@@ -1829,10 +1853,6 @@ p.is-placeholder,
 
     .rate-list a {
         gap: 6px 14px;
-    }
-
-    .rl-spec {
-        flex-basis: 100%;
     }
 
     .grid {

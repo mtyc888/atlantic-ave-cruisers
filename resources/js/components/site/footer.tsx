@@ -49,6 +49,9 @@ export function Footer() {
                                 <SiteLink href="/gallery">Gallery</SiteLink>
                             </li>
                             <li>
+                                <SiteLink href="/waiver">Rental waiver</SiteLink>
+                            </li>
+                            <li>
                                 <SiteLink href="/about">About</SiteLink>
                             </li>
                         </ul>

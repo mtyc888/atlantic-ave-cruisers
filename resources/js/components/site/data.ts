@@ -7,6 +7,7 @@ export const NAV_LINKS = [
     { href: '/rates', label: 'Rates' },
     { href: '/join', label: 'Join the club' },
     { href: '/gallery', label: 'Gallery' },
+    { href: '/waiver', label: 'Waiver' },
     { href: '/about', label: 'About' },
 ];
 
@@ -43,64 +44,20 @@ export const CLUB_PERKS = [
     'Open to every skill level',
 ];
 
-export const DURATIONS = [
-    { id: 'hour', label: 'Hour', detail: '60 minutes' },
-    { id: 'half', label: 'Half day', detail: '4 hours' },
-    { id: 'full', label: 'Full day', detail: '9am to 6pm' },
-] as const;
+/** Ten identical mopeds, so one price list covers the whole fleet. */
+export const FLEET_SIZE = 10;
+export const FLEET_ENGINE = '50cc';
 
-export type DurationId = (typeof DURATIONS)[number]['id'];
-
-/**
- * PLACEHOLDER FLEET — names, specs, prices and counts are invented so the rate
- * table has something to render. Replace every field with the real fleet
- * before this goes live.
- *
- * `rates` keys must match the DURATIONS ids above; the table renders a column
- * per duration, so adding a duration there adds a column here.
- */
-export const FLEET = [
-    {
-        id: 'vehicle-1',
-        name: 'vehicle-1',
-        engine: '50cc',
-        seats: 1,
-        topSpeed: '30 mph',
-        count: 6,
-        rates: { hour: 1, half: 2, full: 3 },
-    },
-    {
-        id: 'vehicle-2',
-        name: 'vehicle-2',
-        engine: '125cc',
-        seats: 2,
-        topSpeed: '45 mph',
-        count: 4,
-        popular: true,
-        rates: { hour: 1, half: 2, full: 3 },
-    },
-    {
-        id: 'vehicle-3',
-        name: 'vehicle-3',
-        engine: '150cc',
-        seats: 2,
-        topSpeed: '55 mph',
-        count: 3,
-        rates: { hour: 1, half: 2, full: 3 },
-    },
-    {
-        id: 'vehicle-4',
-        name: 'vehicle-4',
-        engine: '150cc',
-        seats: 2,
-        topSpeed: '50 mph',
-        count: 2,
-        rates: { hour: 1, half: 2, full: 3 },
-    },
+export const RATES = [
+    { id: '1h', label: '1 hour', price: 35 },
+    { id: '2h', label: '2 hours', price: 60 },
+    { id: '3h', label: '3 hours', price: 80 },
+    { id: '5h', label: '5 hours', price: 125 },
+    { id: 'day', label: 'Full day', price: 150 },
 ];
 
-/** Cheapest hourly rate in the fleet, for "from $X" copy. */
-export const FLEET_FROM = Math.min(...FLEET.map((f) => f.rates.hour));
+/** Lowest rate on the board, for "from $X" copy. */
+export const RATE_FROM = Math.min(...RATES.map((r) => r.price));
 
 /**
  * Ordered west to east along the coast. Coordinates are approximate town

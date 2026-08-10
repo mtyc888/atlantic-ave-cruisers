@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { FLEET_FROM, RENTALS_COPY } from './data';
+import { RATE_FROM, RENTALS_COPY } from './data';
 
 function Check() {
     return (
@@ -25,7 +25,7 @@ export function Rates() {
                     <h1 className="h2">{RENTALS_COPY.title}</h1>
                     <p className="rates-lede">{RENTALS_COPY.lede}</p>
                     <p className="rates-from">
-                        From <b>${FLEET_FROM}</b> an hour
+                        From <b>${RATE_FROM}</b> an hour
                     </p>
                 </header>
 
