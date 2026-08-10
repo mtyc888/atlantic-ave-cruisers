@@ -1537,40 +1537,114 @@
 }
 
 .about-head {
-    max-width: 48ch;
-    margin-bottom: 40px;
+    max-width: 24ch;
+    margin-bottom: 44px;
 }
 
-.about-lede {
+.about-tagline {
+    margin-top: -4px;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    opacity: 0.75;
+}
+
+/* Long-form client copy: a single readable measure. */
+.about-body {
+    max-width: 68ch;
+}
+
+.about-body p {
     font-size: 17px;
-    opacity: 0.84;
+    line-height: 1.78;
+    opacity: 0.88;
 }
 
-.about-grid {
+.about-body p + p {
+    margin-top: 20px;
+}
+
+.about-body h2 {
+    margin: 48px 0 18px;
+    padding-top: 30px;
+    border-top: 2px solid var(--line);
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+}
+
+.about-body .about-goal {
+    margin: 26px 0;
+    padding: 20px 0 20px 24px;
+    border-left: 4px solid var(--gold);
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    opacity: 1;
+}
+
+.about-body .about-signoff {
+    margin-top: 44px;
+    padding-top: 32px;
+    border-top: 2px solid var(--line);
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.3rem, 2.8vw, 1.85rem);
+    line-height: 1.25;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--navy);
+    opacity: 1;
+}
+
+/* Two sign-off lines in a row: keep them as one visual block. */
+.about-body .about-signoff.is-tight {
+    margin-top: 6px;
+    padding-top: 0;
+    border-top: 0;
+}
+
+/* ---------- meet the founder ---------- */
+.founder {
+    padding: 60px 0 40px;
+    background: var(--cream);
+}
+
+.founder-intro {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    align-items: center;
+    padding-top: 56px;
+    margin-bottom: 44px;
+    border-top: 2px solid var(--line);
 }
 
-.about-block {
-    padding: 26px 24px 30px;
+.founder-photo {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
     background: var(--cream-card);
     border: 2px solid var(--navy-deep);
     border-radius: 16px;
-    box-shadow: 6px 6px 0 rgba(28, 74, 102, 0.18);
+    box-shadow: 8px 8px 0 rgba(28, 74, 102, 0.18);
 }
 
-.about-block h2 {
-    margin-bottom: 8px;
-    font-family: var(--display);
-    font-weight: 400;
-    font-size: 19px;
-    text-transform: uppercase;
+.founder-head .h2 {
+    margin-top: 0;
 }
 
-.about-block p {
-    font-size: 14.5px;
-    opacity: 0.8;
+.founder-role {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    opacity: 0.75;
 }
 
 .contact {
@@ -1603,20 +1677,6 @@
 .contact-grid a:hover {
     color: var(--navy);
     text-decoration: underline;
-}
-
-/* Marks copy the client still has to supply, so nothing placeholder ships
-   looking like finished content. Delete alongside the placeholder text. */
-.is-placeholder {
-    position: relative;
-}
-
-.is-placeholder p,
-p.is-placeholder,
-.is-placeholder dd {
-    color: var(--navy);
-    opacity: 0.45;
-    font-style: italic;
 }
 
 .foot {
@@ -1723,12 +1783,13 @@ p.is-placeholder,
         gap: 36px;
     }
 
-    .about-grid {
-        grid-template-columns: 1fr;
-    }
-
     .contact-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .founder-intro {
+        grid-template-columns: 220px 1fr;
+        gap: 28px;
     }
 
     .ride-preview {
@@ -1841,6 +1902,15 @@ p.is-placeholder,
 
     .contact-grid {
         grid-template-columns: 1fr;
+    }
+
+    .founder-intro {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .founder-photo {
+        max-width: 260px;
     }
 
     .signup {
