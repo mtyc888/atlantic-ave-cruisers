@@ -1,5 +1,5 @@
 import { Head } from '@inertiajs/react';
-import { Fleet } from '@/components/site/fleet';
+import { RateTable } from '@/components/site/rate-table';
 import { Rates } from '@/components/site/rates';
 
 export default function RatesPage() {
@@ -8,7 +8,7 @@ export default function RatesPage() {
             <Head title="Moped Rentals" />
             <div className="page">
                 <Rates />
-                <Fleet />
+                <RateTable />
             </div>
         </>
     );

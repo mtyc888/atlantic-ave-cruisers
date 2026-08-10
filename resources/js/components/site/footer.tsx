@@ -19,7 +19,7 @@ export function Footer() {
                         </p>
                     </div>
 
-                    <div>
+                    <div id="visit">
                         <h4>Visit</h4>
                         <p>
                             Atlantic Ave
@@ -40,13 +40,16 @@ export function Footer() {
                                 <a href="mailto:info@atlanticavecruisers.com">info@atlanticavecruisers.com</a>
                             </li>
                             <li>
-                                <SiteLink href="/#photos">Photos</SiteLink>
+                                <SiteLink href="/rates">Rates</SiteLink>
                             </li>
                             <li>
-                                <SiteLink href="/rates">Rates and booking</SiteLink>
+                                <SiteLink href="/join">Join the club</SiteLink>
                             </li>
                             <li>
-                                <SiteLink href="/rides">Weekly rides</SiteLink>
+                                <SiteLink href="/gallery">Gallery</SiteLink>
+                            </li>
+                            <li>
+                                <SiteLink href="/about">About</SiteLink>
                             </li>
                         </ul>
                     </div>

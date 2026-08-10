@@ -10,8 +10,8 @@ export function RidesTeaser() {
                         <span className="label">Community rides</span>
                         <h2 className="h2">Every week, 6pm</h2>
                     </div>
-                    <Link className="teaser-more" href="/rides">
-                        See the route map
+                    <Link className="teaser-more" href="/join">
+                        Join the club
                     </Link>
                 </div>
 
@@ -20,7 +20,7 @@ export function RidesTeaser() {
                         <span className="label">This week</span>
                         <b>{WEEK_STOP.name}</b>
                         <p>{WEEK_STOP.note}</p>
-                        <Link className="btn btn-gold" href="/rides">
+                        <Link className="btn btn-gold" href="/join">
                             See the route
                         </Link>
                     </div>

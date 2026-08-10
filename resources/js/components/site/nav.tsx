@@ -50,9 +50,11 @@ export function Nav() {
                 </nav>
 
                 <div className="nav-right">
-                    <Link className="btn btn-gold" href="/rates">
-                        Book a moped
-                    </Link>
+                    {/* Walk-in shop, no reservations — point people at the
+                        address and hours rather than a booking flow. */}
+                    <SiteLink className="btn btn-gold" href="#visit">
+                        Visit the shop
+                    </SiteLink>
                     <button
                         className="burger"
                         aria-label="Menu"

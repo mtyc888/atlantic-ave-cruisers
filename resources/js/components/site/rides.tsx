@@ -20,7 +20,7 @@ export function Rides() {
                         </h2>
                     </div>
                     <p>
-                        Free group rides from Charlestown to Mystic. Pick a stop to see the run.
+                        Group rides from Charlestown to Mystic. Pick a stop to see the run.
                         Riders on their own bikes are welcome.
                     </p>
                 </div>
@@ -65,8 +65,8 @@ export function Rides() {
                         <span className="label">This week</span>
                         <b>6pm · {WEEK_STOP.name}</b>
                     </div>
-                    <button className="btn btn-gold" onClick={() => scrollToSection('#join')}>
-                        Save me a spot
+                    <button className="btn btn-gold" onClick={() => scrollToSection('#signup')}>
+                        Join the club
                     </button>
                 </div>
             </div>

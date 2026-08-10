@@ -3,10 +3,11 @@
  * whatever page you are already on (the join band lives in the site layout).
  */
 export const NAV_LINKS = [
+    { href: '/', label: 'Home' },
     { href: '/rates', label: 'Rates' },
-    { href: '/rides', label: 'Weekly rides' },
-    { href: '/#photos', label: 'Photos' },
-    { href: '#join', label: 'Join the club' },
+    { href: '/join', label: 'Join the club' },
+    { href: '/gallery', label: 'Gallery' },
+    { href: '/about', label: 'About' },
 ];
 
 export const FACTS = [
@@ -32,6 +33,16 @@ export const RENTALS_COPY = {
     ],
 };
 
+/** One-off fee to join the community ride. */
+export const CLUB_FEE = 5;
+
+export const CLUB_PERKS = [
+    'Added to the riders group chat',
+    'The route by email every week',
+    'Ride our mopeds or bring your own',
+    'Open to every skill level',
+];
+
 export const DURATIONS = [
     { id: 'hour', label: 'Hour', detail: '60 minutes' },
     { id: 'half', label: 'Half day', detail: '4 hours' },
@@ -41,33 +52,30 @@ export const DURATIONS = [
 export type DurationId = (typeof DURATIONS)[number]['id'];
 
 /**
- * PLACEHOLDER FLEET — names, specs, prices and counts are invented so the
- * picker has something to render. Replace every field with the real fleet
- * before this goes live, and drop a photo into each `src`.
+ * PLACEHOLDER FLEET — names, specs, prices and counts are invented so the rate
+ * table has something to render. Replace every field with the real fleet
+ * before this goes live.
+ *
+ * `rates` keys must match the DURATIONS ids above; the table renders a column
+ * per duration, so adding a duration there adds a column here.
  */
 export const FLEET = [
     {
         id: 'vehicle-1',
         name: 'vehicle-1',
         engine: '50cc',
-        tagline: 'Description',
         seats: 1,
         topSpeed: '30 mph',
-        storage: 'Underseat',
         count: 6,
-        src: null as string | null,
         rates: { hour: 1, half: 2, full: 3 },
     },
     {
         id: 'vehicle-2',
         name: 'vehicle-2',
         engine: '125cc',
-        tagline: 'Description',
         seats: 2,
         topSpeed: '45 mph',
-        storage: 'Underseat + rack',
         count: 4,
-        src: null as string | null,
         popular: true,
         rates: { hour: 1, half: 2, full: 3 },
     },
@@ -75,24 +83,18 @@ export const FLEET = [
         id: 'vehicle-3',
         name: 'vehicle-3',
         engine: '150cc',
-        tagline: 'Description',
         seats: 2,
         topSpeed: '55 mph',
-        storage: 'Top box',
         count: 3,
-        src: null as string | null,
         rates: { hour: 1, half: 2, full: 3 },
     },
     {
         id: 'vehicle-4',
         name: 'vehicle-4',
         engine: '150cc',
-        tagline: 'Description',
         seats: 2,
         topSpeed: '50 mph',
-        storage: 'Top box + rack',
         count: 2,
-        src: null as string | null,
         rates: { hour: 1, half: 2, full: 3 },
     },
 ];
@@ -196,7 +198,7 @@ export const REASONS = [
     },
     {
         title: 'Rides, not just rentals',
-        body: 'The weekly ride is free and open to anyone, on our mopeds or your own bike. Most people come back.',
+        body: 'Five dollars puts you in the club for good, on our mopeds or your own bike. Most people come back.',
     },
     {
         title: 'No fine print',

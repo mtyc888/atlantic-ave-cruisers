@@ -39,13 +39,13 @@ export function Hero() {
                     </h1>
                     <p>
                         Hourly, half day, and full day rentals on the Rhode Island shoreline.
-                        Helmets included. Free community ride every week.
+                        Helmets included. Community ride every week.
                     </p>
                     <div className="hero-cta">
                         <Link className="btn btn-gold" href="/rates">
                             Rent a moped
                         </Link>
-                        <Link className="btn btn-outline" href="/rides">
+                        <Link className="btn btn-outline" href="/join">
                             Join a ride
                         </Link>
                     </div>
