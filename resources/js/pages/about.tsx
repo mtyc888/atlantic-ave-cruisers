@@ -48,7 +48,7 @@ export default function AboutPage() {
                             <div>
                                 <dt>Address</dt>
                                 <dd>
-                                    Atlantic Ave
+                                    140 Atlantic Ave
                                     <br />
                                     Westerly, RI 02891
                                 </dd>
@@ -64,14 +64,14 @@ export default function AboutPage() {
                             <div>
                                 <dt>Email</dt>
                                 <dd>
-                                    <a href="mailto:info@atlanticavecruisers.com">
-                                        info@atlanticavecruisers.com
+                                    <a href="mailto:atlantic.ave.cruisers@gmail.com">
+                                        atlantic.ave.cruisers@gmail.com
                                     </a>
                                 </dd>
                             </div>
-                            <div className="is-placeholder">
+                            <div>
                                 <dt>Phone</dt>
-                                <dd>Placeholder.</dd>
+                                <dd>401-284-8925</dd>
                             </div>
                         </dl>
                     </div>

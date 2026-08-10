@@ -1,4 +1,5 @@
 import badge from './aac-badge.png';
+import { SHOP_MAP_URL } from './data';
 import { SiteLink } from './site-link';
 
 export function Footer() {
@@ -19,12 +20,14 @@ export function Footer() {
                         </p>
                     </div>
 
-                    <div id="visit">
+                    <div>
                         <h4>Visit</h4>
                         <p>
-                            Atlantic Ave
-                            <br />
-                            Westerly, RI 02891
+                            <a href={SHOP_MAP_URL} target="_blank" rel="noopener noreferrer">
+                                140 Atlantic Ave
+                                <br />
+                                Westerly, RI 02891
+                            </a>
                         </p>
                         <p className="foot-dim">
                             Daily 9am to 6pm
@@ -37,7 +40,7 @@ export function Footer() {
                         <h4>Contact</h4>
                         <ul>
                             <li>
-                                <a href="mailto:info@atlanticavecruisers.com">info@atlanticavecruisers.com</a>
+                                <a href="mailto:atlantic.ave.cruisers@gmail.com">atlantic.ave.cruisers@gmail.com</a>
                             </li>
                             <li>
                                 <SiteLink href="/rates">Rates</SiteLink>

@@ -1,7 +1,7 @@
 import { Link, usePage } from '@inertiajs/react';
 import { useEffect, useState } from 'react';
 import badge from './aac-badge.png';
-import { NAV_LINKS } from './data';
+import { NAV_LINKS, SHOP_MAP_URL } from './data';
 import { SiteLink } from './site-link';
 
 export function Nav() {
@@ -50,11 +50,17 @@ export function Nav() {
                 </nav>
 
                 <div className="nav-right">
-                    {/* Walk-in shop, no reservations — point people at the
-                        address and hours rather than a booking flow. */}
-                    <SiteLink className="btn btn-gold" href="#visit">
+                    {/* Walk-in shop, no reservations — send people straight to
+                        directions rather than a booking flow. */}
+                    <a
+                        className="btn btn-gold"
+                        href={SHOP_MAP_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         Visit the shop
-                    </SiteLink>
+                        <span className="sr-only"> (opens Google Maps in a new tab)</span>
+                    </a>
                     <button
                         className="burger"
                         aria-label="Menu"

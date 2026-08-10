@@ -17,7 +17,7 @@ export const FACTS = [
     'Weekly community ride, 6pm',
     'Open daily 9am to 6pm',
     'May through October',
-    'Atlantic Ave, Westerly RI',
+    '140 Atlantic Ave, Westerly RI',
 ];
 
 /** Copy for the rentals page, as supplied by the client. */
@@ -130,10 +130,16 @@ export const STOPS = [
 /** The shop every ride rolls out from. */
 export const SHOP = {
     name: 'Atlantic Ave Cruisers',
-    detail: 'Atlantic Ave, Westerly RI',
+    detail: '140 Atlantic Ave, Westerly RI',
+    address: '140 Atlantic Ave, Westerly, RI 02891',
     lat: 41.3268,
     lng: -71.8107,
 };
+
+/** Google Maps URLs API — searches the address rather than pinning a coord. */
+export const SHOP_MAP_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    SHOP.address,
+)}`;
 
 export const THIS_WEEK = 'weekapaug';
 

@@ -1,5 +1,4 @@
-import { FLEET_ENGINE, FLEET_SIZE, RATES } from './data';
-import { scrollToSection } from './scroll-to-section';
+import { FLEET_ENGINE, FLEET_SIZE, RATES, SHOP_MAP_URL } from './data';
 
 /**
  * The whole price list. Every moped in the fleet is the same 50cc model, so
@@ -44,9 +43,15 @@ export function RateTable() {
                     <span className="label">
                         Per moped. First come, first served. Groups welcome, just ask.
                     </span>
-                    <button className="btn btn-gold" onClick={() => scrollToSection('#visit')}>
+                    <a
+                        className="btn btn-gold"
+                        href={SHOP_MAP_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         Find the shop
-                    </button>
+                        <span className="sr-only"> (opens Google Maps in a new tab)</span>
+                    </a>
                 </div>
             </div>
         </section>
