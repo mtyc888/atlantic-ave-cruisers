@@ -1,6 +1,6 @@
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CircleMarker, MapContainer, Polyline, TileLayer, Tooltip, useMap } from 'react-leaflet';
 import { SHOP, STOPS } from './data';
 import { ROUTE_TO } from './routes';
@@ -15,16 +15,29 @@ const ALL_POINTS = L.latLngBounds([
     ...STOPS.map((s) => [s.lat, s.lng] as [number, number]),
 ]).pad(0.15);
 
-/** Frames whichever run is selected, falling back to the whole coast. */
-function FitToRoute({ active }: { active: string }) {
+/**
+ * Slides across to whichever run is selected.
+ *
+ * Pan only — the zoom level is deliberately left untouched. Fitting each
+ * route's bounds meant hopping between a 0.9 mile run and a 12 mile one
+ * zoomed the map violently in and out on every click.
+ */
+function PanToRoute({ active }: { active: string }) {
     const map = useMap();
+    const first = useRef(true);
 
     useEffect(() => {
-        const route = ROUTE_TO[active];
-        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const target = route?.length ? L.latLngBounds(route).pad(0.25) : ALL_POINTS;
+        // Leave the opening view (the whole coast) as MapContainer framed it.
+        if (first.current) {
+            first.current = false;
+            return;
+        }
 
-        map.flyToBounds(target, { duration: reduced ? 0 : 0.8 });
+        const route = ROUTE_TO[active];
+        if (!route?.length) return;
+
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        map.panTo(L.latLngBounds(route).getCenter(), { animate: !reduced });
     }, [active, map]);
 
     return null;
@@ -109,7 +122,7 @@ export function RidesMap({ active, onSelect }: RidesMapProps) {
                 );
             })}
 
-            <FitToRoute active={active} />
+            <PanToRoute active={active} />
         </MapContainer>
     );
 }

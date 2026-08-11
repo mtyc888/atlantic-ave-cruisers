@@ -70,15 +70,19 @@ export const RATE_FROM = Math.min(...RATES.map((r) => r.price));
 /**
  * Ordered west to east along the coast. Coordinates are approximate town
  * centres, good enough to place a marker but worth nudging against the real
- * meeting spot for each ride.
+ * meeting spot for each ride — except Misquamicut, which is pinned to
+ * Atlantic Beach Park.
+ *
+ * `miles`/`time` come from the generated routes in routes.ts; regenerate both
+ * together if a coordinate changes.
  */
 export const STOPS = [
     {
         id: 'mystic',
         name: 'Mystic',
         state: 'CT',
-        miles: 12.2,
-        time: '40 min',
+        miles: 12.5,
+        time: '25 min',
         lat: 41.3543,
         lng: -71.9665,
         note: 'Drawbridge village at the end of the line. Pizza at the top of the hill, seaport on the way back.',
@@ -87,8 +91,8 @@ export const STOPS = [
         id: 'stonington',
         name: 'Stonington Borough',
         state: 'CT',
-        miles: 9.5,
-        time: '25 min',
+        miles: 9.8,
+        time: '20 min',
         lat: 41.3336,
         lng: -71.9053,
         note: 'Stone piers, narrow streets, and the quietest point light on this list. Best at sunset.',
@@ -97,8 +101,8 @@ export const STOPS = [
         id: 'watch-hill',
         name: 'Watch Hill',
         state: 'RI',
-        miles: 3.6,
-        time: '15 min',
+        miles: 3.5,
+        time: '10 min',
         lat: 41.3093,
         lng: -71.8583,
         note: 'The carousel, the lighthouse, and the slow climb past the harbor. Park by the green.',
@@ -107,18 +111,18 @@ export const STOPS = [
         id: 'misquamicut',
         name: 'Misquamicut Beach',
         state: 'RI',
-        miles: 0.2,
-        time: '8 min',
-        lat: 41.3277,
-        lng: -71.8069,
+        miles: 0.9,
+        time: '5 min',
+        lat: 41.32518,
+        lng: -71.79364,
         note: 'Straight run along the state beach. Wind at your back on the way home if you time the sea breeze.',
     },
     {
         id: 'weekapaug',
         name: 'Weekapaug',
         state: 'RI',
-        miles: 3.2,
-        time: '18 min',
+        miles: 2.9,
+        time: '10 min',
         lat: 41.3312,
         lng: -71.757,
         note: 'Low bridge over the breachway. Pull over and watch the fishermen cast at dusk.',
@@ -127,21 +131,21 @@ export const STOPS = [
         id: 'charlestown',
         name: 'Charlestown',
         state: 'RI',
-        miles: 9.8,
-        time: '35 min',
+        miles: 10.1,
+        time: '22 min',
         lat: 41.3766,
         lng: -71.6837,
         note: 'Salt pond roads and the long empty stretch past Blue Shutters. The quietest ride we run.',
     },
 ];
 
-/** The shop every ride rolls out from. */
+/** The shop every ride rolls out from. Coordinates geocoded from the address. */
 export const SHOP = {
     name: 'Atlantic Ave Cruisers',
     detail: '140 Atlantic Ave, Westerly RI',
     address: '140 Atlantic Ave, Westerly, RI 02891',
-    lat: 41.3268,
-    lng: -71.8107,
+    lat: 41.32202,
+    lng: -71.81084,
 };
 
 /** Google Maps URLs API — searches the address rather than pinning a coord. */
