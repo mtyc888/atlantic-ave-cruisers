@@ -16,7 +16,7 @@ export const FACTS = [
     'Free lesson before you leave',
     'Weekly community ride, 6pm',
     'Open daily 9am to 6pm',
-    'May through October',
+    'May through September',
     '140 Atlantic Ave, Westerly RI',
 ];
 

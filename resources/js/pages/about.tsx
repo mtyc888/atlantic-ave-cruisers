@@ -38,7 +38,7 @@ export default function AboutPage() {
                                 <dd>
                                     Daily 9am to 6pm
                                     <br />
-                                    May through October
+                                    May through September
                                 </dd>
                             </div>
                             <div>

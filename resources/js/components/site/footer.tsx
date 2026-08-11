@@ -32,7 +32,7 @@ export function Footer() {
                         <p className="foot-dim">
                             Daily 9am to 6pm
                             <br />
-                            May through October
+                            May through September
                         </p>
                     </div>
 

@@ -23,7 +23,7 @@ export function Founder() {
 
                     <header className="founder-head" data-reveal>
                         <h2 className="h2">Meet the Founder — Lucas Santos</h2>
-                        <p className="founder-role">Founder & Owner, Atlantic Ave Cruisers</p>
+                        <p className="founder-role">Founder & Owner, Atlantic Ave Cruisers LLC</p>
                     </header>
                 </div>
 

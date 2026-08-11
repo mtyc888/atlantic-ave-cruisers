@@ -28,11 +28,7 @@ export function ClubSignup() {
             <div className="wrap signup-in">
                 <div className="signup-copy" data-reveal>
                     <span className="label">Join the club</span>
-                    <h2 className="h2">
-                        ${CLUB_FEE} to ride
-                        <br />
-                        with us
-                    </h2>
+                    <h2 className="h2">Ride with us</h2>
                     <p>
                         One payment, not a subscription. It covers the group chat and the weekly
                         route, and it keeps the ride to people who actually turn up.
@@ -43,10 +39,6 @@ export function ClubSignup() {
                             <li key={perk}>{perk}</li>
                         ))}
                     </ul>
-
-                    <p className="signup-next">
-                        This week we ride to <b>{WEEK_STOP.name}</b>, 6pm from the shop.
-                    </p>
                 </div>
 
                 <div className="signup-card" data-reveal>
@@ -69,7 +61,6 @@ export function ClubSignup() {
                         <form onSubmit={onSubmit} noValidate>
                             <div className="signup-price">
                                 <b>${CLUB_FEE}</b>
-                                <span>one off</span>
                             </div>
 
                             <label>

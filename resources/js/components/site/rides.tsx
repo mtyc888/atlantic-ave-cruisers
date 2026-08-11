@@ -59,16 +59,6 @@ export function Rides() {
                         </div>
                     </div>
                 </div>
-
-                <div className="next" data-reveal>
-                    <div>
-                        <span className="label">This week</span>
-                        <b>6pm · {WEEK_STOP.name}</b>
-                    </div>
-                    <button className="btn btn-gold" onClick={() => scrollToSection('#signup')}>
-                        Join the club
-                    </button>
-                </div>
             </div>
         </section>
     );
