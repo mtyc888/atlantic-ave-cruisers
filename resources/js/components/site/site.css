@@ -1,5 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Paytone+One&family=Rubik:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Spline+Sans+Mono:wght@400;500;600&display=swap');
 
+/*
+ * The app shell paints <html> near-black in dark mode (see app.blade.php) and
+ * the marketing site is light-only, so any strip not covered by .aac shows
+ * black. Claim the page background wherever the site renders, and clip stray
+ * horizontal overflow at the document level — .aac's own clip only contains
+ * its descendants, it cannot stop the page itself from scrolling sideways.
+ * Only overflow-x is touched, so vertical scrolling is untouched.
+ */
+html:has(.aac),
+html:has(.aac) body {
+    background-color: #f8f1e4;
+    /* `hidden` rather than `clip`: on the root element clip is not reliably
+       honored, and there is no position:sticky anywhere for hidden to break.
+       Deliberately no `width: 100%` here — on the root a percentage resolves
+       against the initial containing block, which counts the scrollbar gutter,
+       so it overflows by exactly the scrollbar width. Block elements already
+       fill their container. */
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* Nothing may exceed the page width. The fixed nav is excluded: its
+   left:0/right:0 already sizes it, and adding a width over-constrains it. */
+.aac,
+.aac > main,
+.aac > main > section,
+.aac > main > div > section,
+.aac > footer {
+    max-width: 100%;
+}
+
 .aac {
     --navy: #1c4a66;
     --navy-deep: #0f3149;
@@ -406,6 +437,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .cd-cell b {
+        animation: none;
+    }
+
     .hero-copy .hero-coords {
         opacity: 0.6;
         animation: none;
@@ -533,6 +568,133 @@
     }
 }
 
+/* ---------- opening day countdown ---------- */
+.countdown {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0;
+    color: var(--cream);
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            rgba(248, 241, 228, 0.045) 0 14px,
+            transparent 14px 28px
+        ),
+        radial-gradient(90% 150% at 8% 0%, rgba(42, 95, 128, 0.75), transparent 62%),
+        var(--navy-deep);
+    border-top: 2px solid var(--navy-deep);
+}
+
+.countdown-in {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.countdown-copy h2 {
+    margin: 12px 0 10px;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2rem, 4.6vw, 3.1rem);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+}
+
+.countdown-date {
+    display: inline-block;
+    padding-bottom: 6px;
+    border-bottom: 3px solid var(--gold);
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+}
+
+.countdown-sub {
+    margin-top: 12px;
+    font-size: 14.5px;
+    opacity: 0.72;
+}
+
+.countdown-clock {
+    display: flex;
+    align-items: flex-start;
+    gap: 26px;
+}
+
+.countdown-clock li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Colon sits in the gap between cells so the group reads as a clock. */
+.countdown-clock li + li::before {
+    content: ':';
+    position: absolute;
+    left: -18px;
+    top: 12px;
+    font-family: var(--display);
+    font-size: 1.7rem;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.85;
+}
+
+/* Ticket stub, matching the chunky border + hard offset shadow used on the
+   rate cards and sign-up panel. */
+.cd-cell {
+    display: block;
+    overflow: hidden;
+    min-width: 104px;
+    padding: 18px 16px 14px;
+    background: var(--cream);
+    color: var(--navy-deep);
+    border: 2px solid var(--navy-deep);
+    border-radius: 14px;
+    box-shadow: 6px 6px 0 var(--gold);
+}
+
+.cd-cell b {
+    display: block;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2.1rem, 4.6vw, 3.1rem);
+    line-height: 1;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+    animation: cd-flip 0.42s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Replayed on every value change via the React key. */
+@keyframes cd-flip {
+    from {
+        transform: translateY(-70%);
+        opacity: 0;
+    }
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.cd-unit {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
 /* ---------- location photo band ---------- */
 .band {
     position: relative;
@@ -604,6 +766,11 @@
     background: var(--navy);
     color: var(--cream);
     overflow: hidden;
+    /* The track is deliberately several screens wide. `contain: paint`
+       guarantees it cannot contribute to any ancestor's scrollable overflow,
+       which `overflow: hidden` alone does not always achieve for an
+       animated, transformed child. */
+    contain: paint;
     padding: 15px 0;
     border-top: 2px solid var(--navy-deep);
     border-bottom: 2px solid var(--navy-deep);
@@ -1672,6 +1839,7 @@
 
 .contact-grid dd {
     font-size: 15px;
+    overflow-wrap: anywhere;
 }
 
 .contact-grid a:hover {
@@ -1724,6 +1892,9 @@
 
 .foot a {
     opacity: 0.85;
+    /* Email addresses are unbreakable words; without this they set a grid
+       track's minimum width and push the page wider on narrow screens. */
+    overflow-wrap: anywhere;
     transition:
         opacity 0.2s ease,
         color 0.2s ease;
@@ -1883,6 +2054,26 @@
     .band-media {
         aspect-ratio: 3 / 2;
         max-height: 300px;
+    }
+
+    .countdown-clock {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .countdown-clock li {
+        flex: 1;
+    }
+
+    .countdown-clock li + li::before {
+        display: none;
+    }
+
+    .cd-cell {
+        min-width: 0;
+        width: 100%;
+        padding: 14px 6px 11px;
+        box-shadow: 4px 4px 0 var(--gold);
     }
 
     .stoplist {

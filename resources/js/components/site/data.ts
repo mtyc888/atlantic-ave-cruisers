@@ -34,6 +34,14 @@ export const RENTALS_COPY = {
     ],
 };
 
+/**
+ * Opening day: the Saturday of Memorial Day weekend 2027, 9am at the shop.
+ * The -04:00 offset is Rhode Island on EDT — pinning it to an absolute instant
+ * means the countdown reads the same wherever the visitor is.
+ */
+export const OPENING_DAY = new Date('2027-05-29T09:00:00-04:00');
+export const OPENING_LABEL = 'Saturday, May 29, 2027';
+
 /** One-off fee to join the community ride. */
 export const CLUB_FEE = 5;
 

@@ -1,4 +1,5 @@
 import { Head } from '@inertiajs/react';
+import { Countdown } from '@/components/site/countdown';
 import { Facts } from '@/components/site/facts';
 import { Hero } from '@/components/site/hero';
 import { PhotoBand } from '@/components/site/photo-band';
@@ -11,6 +12,7 @@ export default function Welcome() {
         <>
             <Head title="Moped rentals in Westerly, RI" />
             <Hero />
+            <Countdown />
             <PhotoBand />
             <Facts />
             <RatesTeaser />
