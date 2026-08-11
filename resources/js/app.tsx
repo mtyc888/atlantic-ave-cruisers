@@ -7,7 +7,7 @@ import AuthLayout from '@/layouts/auth-layout';
 import SettingsLayout from '@/layouts/settings/layout';
 import SiteLayout from '@/layouts/site-layout';
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const appName = import.meta.env.VITE_APP_NAME || 'Atlantic Ave Cruisers';
 
 /** Public marketing pages that render inside the site chrome. */
 const SITE_PAGES = ['welcome', 'rates', 'join', 'gallery', 'waiver', 'about'];
