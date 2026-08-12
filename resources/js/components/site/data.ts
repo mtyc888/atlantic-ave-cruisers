@@ -14,7 +14,7 @@ export const NAV_LINKS = [
 export const FACTS = [
     'Helmets and locks included',
     'Free lesson before you leave',
-    'Weekly community ride, 6pm',
+    'Weekly community ride',
     'Open daily 9am to 6pm',
     'May through September',
     '140 Atlantic Ave, Westerly RI',
@@ -49,7 +49,6 @@ export const CLUB_PERKS = [
     'Added to the riders group chat',
     'The route by email every week',
     'Ride our mopeds or bring your own',
-    'Open to every skill level',
 ];
 
 /** Ten identical mopeds, so one price list covers the whole fleet. */
@@ -95,7 +94,7 @@ export const STOPS = [
         time: '20 min',
         lat: 41.3336,
         lng: -71.9053,
-        note: 'Stone piers, narrow streets, and the quietest point light on this list. Best at sunset.',
+        note: 'Best at sunset.',
     },
     {
         id: 'watch-hill',
@@ -105,7 +104,7 @@ export const STOPS = [
         time: '10 min',
         lat: 41.3093,
         lng: -71.8583,
-        note: 'The carousel, the lighthouse, and the slow climb past the harbor. Park by the green.',
+        note: 'The carousel, the lighthouse, and the slow climb past the harbor.',
     },
     {
         id: 'misquamicut',
