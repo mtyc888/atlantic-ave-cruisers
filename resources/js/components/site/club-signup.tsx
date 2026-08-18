@@ -1,26 +1,31 @@
+import { useForm, usePage } from '@inertiajs/react';
 import type { FormEvent } from 'react';
-import { useState } from 'react';
-import { CLUB_FEE, CLUB_PERKS, WEEK_STOP } from './data';
+import { CLUB_FEE, CLUB_PERKS } from './data';
 
 /**
  * Sign-up for the weekly community ride.
  *
- * FRONT END ONLY. Nothing is submitted or charged — there is no backend and no
- * payment provider wired up yet. Submitting just swaps in the confirmation
- * panel so the flow can be reviewed. Before this goes anywhere near real
- * users it needs a real handler and a real checkout.
+ * Posts to /join, which emails the details to the shop inbox. Nothing is
+ * stored and nothing is charged — the fee is collected in person, so the
+ * copy must not imply an online payment was taken.
  */
 export function ClubSignup() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [sent, setSent] = useState(false);
+    const { props } = usePage<{ flash?: { signedUp?: boolean } }>();
+    const sent = Boolean(props.flash?.signedUp);
 
-    const canSubmit = name.trim() !== '' && email.includes('@') && phone.trim() !== '';
+    const { data, setData, post, processing, errors, reset } = useForm({
+        name: '',
+        email: '',
+        phone: '',
+        website: '', // honeypot — must stay empty
+    });
 
     const onSubmit = (e: FormEvent) => {
         e.preventDefault();
-        if (canSubmit) setSent(true);
+        post('/join', {
+            preserveScroll: true,
+            onSuccess: () => reset(),
+        });
     };
 
     return (
@@ -30,8 +35,8 @@ export function ClubSignup() {
                     <span className="label">Join the club</span>
                     <h2 className="h2">Ride with us</h2>
                     <p>
-                        One payment, not a subscription. It covers the group chat and the weekly
-                        route, and it keeps the ride to people who actually turn up.
+                        Tell us where to find you and we'll add you to the group chat before the
+                        next ride.
                     </p>
 
                     <ul className="signup-perks">
@@ -47,20 +52,15 @@ export function ClubSignup() {
                             <span className="label">You're in</span>
                             <h3>See you at 6pm</h3>
                             <p>
-                                We'll email {email} with the route and add {phone} to the riders
-                                group chat before the next ride.
+                                We've got your details and we'll be in touch with the route before
+                                the next ride.
                             </p>
-                            <button
-                                className="btn btn-outline"
-                                onClick={() => setSent(false)}
-                            >
-                                Sign up someone else
-                            </button>
                         </div>
                     ) : (
                         <form onSubmit={onSubmit} noValidate>
                             <div className="signup-price">
                                 <b>${CLUB_FEE}</b>
+                                <span>paid at the shop</span>
                             </div>
 
                             <label>
@@ -69,10 +69,11 @@ export function ClubSignup() {
                                     type="text"
                                     name="name"
                                     autoComplete="name"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
+                                    value={data.name}
+                                    onChange={(e) => setData('name', e.target.value)}
                                     required
                                 />
+                                {errors.name && <em className="signup-error">{errors.name}</em>}
                             </label>
 
                             <label>
@@ -82,10 +83,11 @@ export function ClubSignup() {
                                     name="email"
                                     autoComplete="email"
                                     placeholder="you@example.com"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={data.email}
+                                    onChange={(e) => setData('email', e.target.value)}
                                     required
                                 />
+                                {errors.email && <em className="signup-error">{errors.email}</em>}
                             </label>
 
                             <label>
@@ -94,19 +96,40 @@ export function ClubSignup() {
                                     type="tel"
                                     name="phone"
                                     autoComplete="tel"
-                                    value={phone}
-                                    onChange={(e) => setPhone(e.target.value)}
+                                    value={data.phone}
+                                    onChange={(e) => setData('phone', e.target.value)}
                                     required
                                 />
-                                <em>So we can add you to the group chat.</em>
+                                {errors.phone ? (
+                                    <em className="signup-error">{errors.phone}</em>
+                                ) : (
+                                    <em>So we can add you to the group chat.</em>
+                                )}
                             </label>
 
-                            <button className="btn btn-gold" type="submit" disabled={!canSubmit}>
-                                Pay ${CLUB_FEE} and join
+                            {/* Honeypot: off-screen and skipped by tabbing, so only a
+                                bot fills it in. The server rejects any request that does. */}
+                            <div className="signup-trap" aria-hidden="true">
+                                <label>
+                                    Website
+                                    <input
+                                        type="text"
+                                        name="website"
+                                        tabIndex={-1}
+                                        autoComplete="off"
+                                        value={data.website}
+                                        onChange={(e) => setData('website', e.target.value)}
+                                    />
+                                </label>
+                            </div>
+
+                            <button className="btn btn-gold" type="submit" disabled={processing}>
+                                {processing ? 'Sending…' : 'Sign me up'}
                             </button>
 
                             <p className="signup-fine">
-                                You only pay once. Riders under 18 need a parent along.
+                                The ${CLUB_FEE} is paid once, at the shop. Riders under 18 need a
+                                parent along.
                             </p>
                         </form>
                     )}

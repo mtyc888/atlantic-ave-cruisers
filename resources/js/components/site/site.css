@@ -1477,6 +1477,27 @@ html:has(.aac) body {
     margin-top: 14px;
     font-size: 12px;
 }
+
+.signup-card label em.signup-error {
+    color: #b3261e;
+    font-weight: 600;
+    opacity: 1;
+}
+
+.signup-card input:disabled,
+.signup-card .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Honeypot. Hidden from people without display:none, which some bots skip. */
+.signup-trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
 .signup-done h3 {
     font-family: var(--display);
     text-transform: uppercase;
