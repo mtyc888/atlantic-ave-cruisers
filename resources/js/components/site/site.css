@@ -2156,6 +2156,37 @@ html:has(.aac) body {
     .gal-col {
         gap: 10px;
     }
+
+    .photos {
+        padding: 64px 0;
+    }
+
+    .photos-head {
+        margin-bottom: 24px;
+    }
+}
+
+/* Phones: a single column, so portrait shots are actually big enough to see.
+   Must stay in step with columnsFor() in photos.tsx. */
+@media (max-width: 560px) {
+    .gal {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .gal-col {
+        gap: 12px;
+    }
+
+    .photos {
+        padding: 56px 0;
+    }
+
+    /* Chunky borders and radii read as heavy at full-bleed phone width. */
+    .gal-cell {
+        border-width: 1.5px;
+        border-radius: 12px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {

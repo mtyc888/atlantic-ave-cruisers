@@ -61,17 +61,33 @@ const PLACEHOLDERS = Array.from({ length: 9 }, (_, i) => ({
     alt: `Gallery photo ${i + 1}`,
 }));
 
-/** Column count, matched to the breakpoints in site.css. */
+/**
+ * Column count, matched to the breakpoints in site.css — the two must agree,
+ * or the grid ends up with a different number of tracks than there are
+ * columns and the reading order breaks.
+ *
+ * One column on phones: two columns of portrait shots leaves each about
+ * 150px wide, which is a thumbnail rather than a photograph.
+ */
+function columnsFor(width: number) {
+    if (width >= 961) return 3;
+    if (width >= 561) return 2;
+    return 1;
+}
+
 function useColumnCount() {
-    const [cols, setCols] = useState(3);
+    // Read the real width on the first render so the layout does not flash
+    // three columns before settling on a phone.
+    const [cols, setCols] = useState(() =>
+        typeof window === 'undefined' ? 3 : columnsFor(window.innerWidth),
+    );
 
     useEffect(() => {
-        const wide = window.matchMedia('(min-width: 961px)');
-        const sync = () => setCols(wide.matches ? 3 : 2);
+        const sync = () => setCols(columnsFor(window.innerWidth));
 
         sync();
-        wide.addEventListener('change', sync);
-        return () => wide.removeEventListener('change', sync);
+        window.addEventListener('resize', sync);
+        return () => window.removeEventListener('resize', sync);
     }, []);
 
     return cols;
