@@ -60,7 +60,6 @@ export function ClubSignup() {
                         <form onSubmit={onSubmit} noValidate>
                             <div className="signup-price">
                                 <b>${CLUB_FEE}</b>
-                                <span>paid at the shop</span>
                             </div>
 
                             <label>
@@ -128,7 +127,7 @@ export function ClubSignup() {
                             </button>
 
                             <p className="signup-fine">
-                                The ${CLUB_FEE} is paid once, at the shop. Riders under 18 need a
+                                The ${CLUB_FEE} is paid once. Riders under 18 need a
                                 parent along.
                             </p>
                         </form>
