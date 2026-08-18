@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import backdrop from './atlantic-ave.jpg';
 import { OPENING_DAY, OPENING_LABEL } from './data';
 
 const UNITS = ['Days', 'Hours', 'Minutes', 'Seconds'] as const;
@@ -29,6 +30,9 @@ export function Countdown() {
 
     return (
         <section className="countdown">
+            <img className="countdown-media" src={backdrop} alt="" aria-hidden="true" />
+            <div className="countdown-scrim" aria-hidden="true" />
+
             <div className="wrap countdown-in">
                 <div className="countdown-copy" data-reveal>
                     <span className="label">{open ? 'Now open' : 'Counting down to'}</span>

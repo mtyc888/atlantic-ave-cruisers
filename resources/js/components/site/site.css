@@ -569,20 +569,46 @@ html:has(.aac) body {
 }
 
 /* ---------- opening day countdown ---------- */
+/* The photograph is the backdrop rather than a separate band stacked above
+   or below: one section instead of two competing full-bleed strips. */
 .countdown {
     position: relative;
+    isolation: isolate;
     overflow: hidden;
-    padding: 60px 0;
+    display: flex;
+    align-items: center;
+    min-height: 460px;
+    padding: 72px 0;
     color: var(--cream);
-    background:
-        repeating-linear-gradient(
-            -45deg,
-            rgba(248, 241, 228, 0.045) 0 14px,
-            transparent 14px 28px
-        ),
-        radial-gradient(90% 150% at 8% 0%, rgba(42, 95, 128, 0.75), transparent 62%),
-        var(--navy-deep);
+    background: var(--navy-deep);
     border-top: 2px solid var(--navy-deep);
+    border-bottom: 2px solid var(--navy-deep);
+}
+
+.countdown-media {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Keeps the horizon and the lighthouse in frame as the band changes height. */
+    object-position: center 42%;
+}
+
+/* Light navy wash: just enough behind the type on the left to hold contrast,
+   fading away fast so the photograph carries the right-hand side. */
+.countdown-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        100deg,
+        rgba(15, 49, 73, 0.78) 0%,
+        rgba(15, 49, 73, 0.55) 32%,
+        rgba(15, 49, 73, 0.2) 64%,
+        rgba(15, 49, 73, 0.08) 100%
+    );
 }
 
 .countdown-in {
@@ -592,6 +618,12 @@ html:has(.aac) body {
     justify-content: space-between;
     gap: 40px;
     flex-wrap: wrap;
+}
+
+/* The wash is deliberately light, so the type carries its own contrast
+   rather than relying on a heavy overlay. */
+.countdown-copy {
+    text-shadow: 0 1px 14px rgba(6, 24, 38, 0.7);
 }
 
 .countdown-copy h2 {
@@ -693,73 +725,6 @@ html:has(.aac) body {
     letter-spacing: 0.18em;
     text-transform: uppercase;
     opacity: 0.6;
-}
-
-/* ---------- location photo band ---------- */
-.band {
-    position: relative;
-    overflow: hidden;
-    background: var(--navy-deep);
-    /* Only a top rule: .facts below already draws its own border-top. */
-    border-top: 2px solid var(--navy-deep);
-}
-
-.band-media {
-    display: block;
-    width: 100%;
-    aspect-ratio: 4 / 1;
-    max-height: 360px;
-}
-
-/* Placeholder reads as intentional dark space rather than the pale
-   cream slot used inside cards. */
-.band .slot-empty {
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    background:
-        repeating-linear-gradient(
-            -45deg,
-            rgba(248, 241, 228, 0.07) 0 14px,
-            rgba(248, 241, 228, 0.02) 14px 28px
-        ),
-        var(--navy);
-}
-
-/* .band-tag already names the location, so the slot's own alt-text label
-   would just repeat it. Keep it for screen readers, hide it visually. */
-.band .slot-empty span {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-}
-
-.band-tag {
-    position: absolute;
-    inset: auto 0 0 0;
-    padding: 60px 0 22px;
-    color: var(--cream);
-    background: linear-gradient(to top, rgba(15, 49, 73, 0.9), transparent);
-    pointer-events: none;
-}
-
-.band-tag-in {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-.band-tag em {
-    font-family: var(--mono);
-    font-style: normal;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    opacity: 0.75;
 }
 
 .facts {
@@ -2083,9 +2048,23 @@ html:has(.aac) body {
         height: 340px;
     }
 
-    .band-media {
-        aspect-ratio: 3 / 2;
-        max-height: 300px;
+    .countdown {
+        min-height: 0;
+        padding: 56px 0;
+    }
+
+    .countdown-media {
+        object-position: center 45%;
+    }
+
+    /* Content stacks, so the wash needs to cover top-to-bottom instead. */
+    .countdown-scrim {
+        background: linear-gradient(
+            180deg,
+            rgba(15, 49, 73, 0.72) 0%,
+            rgba(15, 49, 73, 0.55) 55%,
+            rgba(15, 49, 73, 0.45) 100%
+        );
     }
 
     .countdown-clock {
