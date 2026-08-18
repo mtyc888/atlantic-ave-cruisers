@@ -50,10 +50,8 @@ export function ClubSignup() {
                     {sent ? (
                         <div className="signup-done">
                             <span className="label">You're in</span>
-                            <h3>See you at 6pm</h3>
                             <p>
-                                We've got your details and we'll be in touch with the route before
-                                the next ride.
+                                We've got your details and we'll be in touch.
                             </p>
                         </div>
                     ) : (
