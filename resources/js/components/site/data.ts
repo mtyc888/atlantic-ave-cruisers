@@ -156,15 +156,6 @@ export const THIS_WEEK = 'weekapaug';
 
 export const WEEK_STOP = STOPS.find((s) => s.id === THIS_WEEK) ?? STOPS[3];
 
-export const PHOTOS = [
-    { id: 'p1', src: null, alt: 'Sunset ride on Atlantic Ave', shape: 'wide' },
-    { id: 'p2', src: null, alt: 'Watch Hill lighthouse stop', shape: 'tall' },
-    { id: 'p3', src: null, alt: 'The fleet lined up at the shop', shape: 'sq' },
-    { id: 'p4', src: null, alt: 'Breachway bridge at Weekapaug', shape: 'sq' },
-    { id: 'p5', src: null, alt: 'The weekly crew at Misquamicut', shape: 'tall' },
-    { id: 'p6', src: null, alt: 'Salt pond road, Charlestown', shape: 'wide' },
-] as { id: string; src: string | null; alt: string; shape: string }[];
-
 export const REASONS = [
     {
         title: 'Locals run it',
