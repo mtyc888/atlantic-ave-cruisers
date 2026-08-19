@@ -1,11 +1,12 @@
-import { Head } from '@inertiajs/react';
+import { useTitle } from '@/components/site/use-title';
 import { Photos } from '@/components/site/photos';
 
 export default function GalleryPage() {
+    useTitle('Gallery');
+
     return (
         <>
-            <Head title="Gallery" />
-            <div className="page">
+                        <div className="page">
                 <Photos />
             </div>
         </>

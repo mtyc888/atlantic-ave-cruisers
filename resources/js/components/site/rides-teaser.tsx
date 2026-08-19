@@ -1,4 +1,4 @@
-import { Link } from '@inertiajs/react';
+import { Link } from './router';
 import { STOPS, WEEK_STOP } from './data';
 
 export function RidesTeaser() {

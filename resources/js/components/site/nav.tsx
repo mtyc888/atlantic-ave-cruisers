@@ -1,4 +1,4 @@
-import { Link, usePage } from '@inertiajs/react';
+import { Link, useUrl } from './router';
 import { useEffect, useState } from 'react';
 import badge from './aac-badge.png';
 import { NAV_LINKS, SHOP_MAP_URL } from './data';
@@ -7,7 +7,7 @@ import { SiteLink } from './site-link';
 export function Nav() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const { url } = usePage();
+    const url = useUrl();
     const path = url.split('#')[0].split('?')[0];
     // Only the homepage has a hero for the nav to float over; every other page
     // starts with a content section, so the bar stays solid there.

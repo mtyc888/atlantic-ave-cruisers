@@ -1,31 +1,61 @@
-import { useForm, usePage } from '@inertiajs/react';
 import type { FormEvent } from 'react';
+import { useState } from 'react';
 import { CLUB_FEE, CLUB_PERKS } from './data';
 
 /**
  * Sign-up for the weekly community ride.
  *
- * Posts to /join, which emails the details to the shop inbox. Nothing is
+ * Posts to /api/join, which emails the details to the shop inbox. Nothing is
  * stored and nothing is charged — the fee is collected in person, so the
  * copy must not imply an online payment was taken.
  */
+
+type Fields = { name: string; email: string; phone: string; website: string };
+
+const EMPTY: Fields = { name: '', email: '', phone: '', website: '' };
+
 export function ClubSignup() {
-    const { props } = usePage<{ flash?: { signedUp?: boolean } }>();
-    const sent = Boolean(props.flash?.signedUp);
+    const [data, setData] = useState<Fields>(EMPTY);
+    const [errors, setErrors] = useState<Partial<Record<keyof Fields | 'form', string>>>({});
+    const [processing, setProcessing] = useState(false);
+    const [sent, setSent] = useState(false);
 
-    const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
-        email: '',
-        phone: '',
-        website: '', // honeypot — must stay empty
-    });
+    const set = (field: keyof Fields, value: string) => {
+        setData((d) => ({ ...d, [field]: value }));
+        setErrors((e) => ({ ...e, [field]: undefined }));
+    };
 
-    const onSubmit = (e: FormEvent) => {
+    const onSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        post('/join', {
-            preserveScroll: true,
-            onSuccess: () => reset(),
-        });
+        if (processing) return;
+
+        setProcessing(true);
+        setErrors({});
+
+        try {
+            const res = await fetch('/api/join', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+
+            if (res.ok) {
+                setSent(true);
+                setData(EMPTY);
+                return;
+            }
+
+            const body = await res.json().catch(() => ({}));
+            setErrors(
+                body.errors ?? {
+                    form: 'Something went wrong sending that. Please try again, or email us directly.',
+                },
+            );
+        } catch {
+            setErrors({ form: 'Could not reach the server. Please check your connection.' });
+        } finally {
+            setProcessing(false);
+        }
     };
 
     return (
@@ -50,9 +80,7 @@ export function ClubSignup() {
                     {sent ? (
                         <div className="signup-done">
                             <span className="label">You're in</span>
-                            <p>
-                                We've got your details and we'll be in touch.
-                            </p>
+                            <p>We've got your details and we'll be in touch.</p>
                         </div>
                     ) : (
                         <form onSubmit={onSubmit} noValidate>
@@ -67,7 +95,7 @@ export function ClubSignup() {
                                     name="name"
                                     autoComplete="name"
                                     value={data.name}
-                                    onChange={(e) => setData('name', e.target.value)}
+                                    onChange={(e) => set('name', e.target.value)}
                                     required
                                 />
                                 {errors.name && <em className="signup-error">{errors.name}</em>}
@@ -81,7 +109,7 @@ export function ClubSignup() {
                                     autoComplete="email"
                                     placeholder="you@example.com"
                                     value={data.email}
-                                    onChange={(e) => setData('email', e.target.value)}
+                                    onChange={(e) => set('email', e.target.value)}
                                     required
                                 />
                                 {errors.email && <em className="signup-error">{errors.email}</em>}
@@ -94,7 +122,7 @@ export function ClubSignup() {
                                     name="phone"
                                     autoComplete="tel"
                                     value={data.phone}
-                                    onChange={(e) => setData('phone', e.target.value)}
+                                    onChange={(e) => set('phone', e.target.value)}
                                     required
                                 />
                                 {errors.phone ? (
@@ -115,7 +143,7 @@ export function ClubSignup() {
                                         tabIndex={-1}
                                         autoComplete="off"
                                         value={data.website}
-                                        onChange={(e) => setData('website', e.target.value)}
+                                        onChange={(e) => set('website', e.target.value)}
                                     />
                                 </label>
                             </div>
@@ -124,9 +152,10 @@ export function ClubSignup() {
                                 {processing ? 'Sending…' : 'Sign me up'}
                             </button>
 
+                            {errors.form && <p className="signup-error">{errors.form}</p>}
+
                             <p className="signup-fine">
-                                The ${CLUB_FEE} is paid once. Riders under 18 need a
-                                parent along.
+                                The ${CLUB_FEE} is paid once. Riders under 18 need a parent along.
                             </p>
                         </form>
                     )}

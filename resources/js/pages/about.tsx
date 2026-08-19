@@ -1,13 +1,14 @@
-import { Head } from '@inertiajs/react';
+import { useTitle } from '@/components/site/use-title';
 import { About } from '@/components/site/about';
 import { SHOP_MAP_URL } from '@/components/site/data';
 import { Founder } from '@/components/site/founder';
 
 export default function AboutPage() {
+    useTitle('About');
+
     return (
         <>
-            <Head title="About" />
-            <div className="page">
+                        <div className="page">
                 <About />
                 <Founder />
 

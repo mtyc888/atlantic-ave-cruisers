@@ -1,4 +1,4 @@
-import { Link } from '@inertiajs/react';
+import { Link } from './router';
 import { useEffect, useRef } from 'react';
 import badge from './no-background-logo.jpeg';
 import { scrollToSection } from './scroll-to-section';

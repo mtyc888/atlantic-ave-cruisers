@@ -19,6 +19,11 @@ html:has(.aac) body {
        fill their container. */
     overflow-x: hidden;
     max-width: 100%;
+    /* Tailwind preflight used to zero this for us; the standalone static build
+       does not load Tailwind, so without it the browser default body margin
+       leaves an 8px gutter of page background around every section. */
+    margin: 0;
+    padding: 0;
 }
 
 /* Nothing may exceed the page width. The fixed nav is excluded: its

@@ -1,15 +1,15 @@
-import { usePage } from '@inertiajs/react';
+import { useUrl } from './router';
 import { useEffect } from 'react';
 
 /**
  * Fades in every [data-reveal] element as it scrolls into view.
  *
- * Keyed on the current url: the site layout persists across Inertia visits,
+ * Keyed on the current url: the layout persists across client-side visits,
  * so a mount-only effect would never see the incoming page's elements and
  * they would stay stuck at opacity 0.
  */
 export function useReveal() {
-    const { url } = usePage();
+    const url = useUrl();
 
     useEffect(() => {
         const els = Array.from(document.querySelectorAll('[data-reveal]'));

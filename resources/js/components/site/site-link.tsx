@@ -1,4 +1,4 @@
-import { Link } from '@inertiajs/react';
+import { Link } from './router';
 import type { ReactNode } from 'react';
 import { scrollToSection } from './scroll-to-section';
 

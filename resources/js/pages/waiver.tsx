@@ -1,11 +1,12 @@
-import { Head } from '@inertiajs/react';
+import { useTitle } from '@/components/site/use-title';
 import { Waiver } from '@/components/site/waiver';
 
 export default function WaiverPage() {
+    useTitle('Rental waiver');
+
     return (
         <>
-            <Head title="Rental waiver" />
-            <div className="page">
+                        <div className="page">
                 <section className="waiver-page">
                     <div className="wrap">
                         <div className="waiver-intro">

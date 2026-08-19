@@ -1,4 +1,4 @@
-import { Link } from '@inertiajs/react';
+import { Link } from './router';
 import type { CSSProperties } from 'react';
 import { FLEET_ENGINE, FLEET_SIZE, RATES } from './data';
 
