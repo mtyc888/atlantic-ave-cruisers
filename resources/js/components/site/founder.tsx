@@ -43,34 +43,6 @@ export function Founder() {
                         Island summer on the coast so special.
                     </p>
 
-                    <p data-reveal>
-                        Lucas' career has always centered around people, leadership, and community.
-                        Professionally, he works as a Talent Acquisition Consultant helping connect
-                        people with new career opportunities and guiding candidates through
-                        important steps in their professional lives.
-                    </p>
-
-                    <p data-reveal>
-                        Outside of his career, basketball has been another major part of Lucas'
-                        life. He has been involved in coaching boys basketball at multiple levels
-                        and spent two years coaching at Westerly High School, becoming part of the
-                        local basketball community and building relationships with players,
-                        families, and fellow coaches.
-                    </p>
-
-                    <p data-reveal>
-                        Today, Lucas is back at his alma mater, Chariho High School, where he
-                        continues to give back through high school boys basketball. Coaching has
-                        given him the opportunity to work with young athletes, teach teamwork and
-                        discipline, and hopefully make a positive impact on the next generation.
-                    </p>
-
-                    <p data-reveal>
-                        Whether through recruiting, coaching, or now entrepreneurship, Lucas has
-                        always enjoyed working with people and being part of something bigger than
-                        himself.
-                    </p>
-
                     <h2 data-reveal>The Idea Behind Atlantic Ave Cruisers</h2>
 
                     <p data-reveal>
