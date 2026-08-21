@@ -65,8 +65,7 @@ export function ClubSignup() {
                     <span className="label">Join the club</span>
                     <h2 className="h2">Ride with us</h2>
                     <p>
-                        Tell us where to find you and we'll add you to the group chat before the
-                        next ride.
+                        Pay the $5 and we’ll add you to the groupchat before the next ride
                     </p>
 
                     <ul className="signup-perks">
