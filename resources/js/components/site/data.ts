@@ -56,11 +56,9 @@ export const FLEET_SIZE = 10;
 export const FLEET_ENGINE = '50cc';
 
 export const RATES = [
-    { id: '1h', label: '1 hour', price: 35 },
-    { id: '2h', label: '2 hours', price: 60 },
-    { id: '3h', label: '3 hours', price: 80 },
-    { id: '5h', label: '5 hours', price: 125 },
-    { id: 'day', label: 'Full day', price: 150 },
+    { id: '60m', label: '60 mins', price: 60 },
+    { id: 'halfday', label: 'half day', price: 90 },
+    { id: 'day', label: 'full day', price: 175 },
 ];
 
 /** Lowest rate on the board, for "from $X" copy. */
