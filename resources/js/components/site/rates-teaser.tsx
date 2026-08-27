@@ -12,7 +12,7 @@ export function RatesTeaser() {
                         <h2 className="h2">By the hour or all day</h2>
                     </div>
                     <Link className="teaser-more" href="/rates">
-                        See all rates
+                        Rates
                     </Link>
                 </div>
 
