@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { RATE_FROM, RENTALS_COPY } from './data';
+import { RATE_FROM, TOURS_COPY } from './data';
 
 function Check() {
     return (
@@ -21,16 +21,16 @@ export function Rates() {
         <section className="rates" id="rates">
             <div className="wrap">
                 <header className="rates-head" data-reveal>
-                    <span className="label">Rentals</span>
-                    <h1 className="h2">{RENTALS_COPY.title}</h1>
-                    <p className="rates-lede">{RENTALS_COPY.lede}</p>
+                    <span className="label">Moped tours</span>
+                    <h1 className="h2">{TOURS_COPY.title}</h1>
+                    <p className="rates-lede">{TOURS_COPY.lede}</p>
                     <p className="rates-from">
-                        From <b>${RATE_FROM}</b> an hour
+                        Tour price <b>${RATE_FROM}</b>
                     </p>
                 </header>
 
                 <ul className="perks">
-                    {RENTALS_COPY.perks.map((perk, idx) => (
+                    {TOURS_COPY.perks.map((perk, idx) => (
                         <li
                             key={perk}
                             data-reveal

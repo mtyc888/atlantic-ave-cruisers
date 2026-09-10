@@ -4,7 +4,7 @@
  */
 export const NAV_LINKS = [
     { href: '/', label: 'Home' },
-    { href: '/rates', label: 'Rates' },
+    { href: '/rates', label: 'Moped Tours' },
     { href: '/join', label: 'Join the club' },
     { href: '/gallery', label: 'Gallery' },
     { href: '/waiver', label: 'Waiver' },
@@ -12,27 +12,29 @@ export const NAV_LINKS = [
 ];
 
 export const FACTS = [
-    'Helmets and locks included',
-    'Free lesson before you leave',
-    'Weekly community ride',
-    'Open daily 9am to 6pm',
-    'May through September',
-    '140 Atlantic Ave, Westerly RI',
+    'Guided sightseeing tours',
+    'Restaurant stops',
+    'Historic coastal views',
+    'Automatic 50cc mopeds',
+    'Helmets included',
+    'Friday–Sunday',
 ];
 
-/** Copy for the rentals page, as supplied by the client. */
-export const RENTALS_COPY = {
-    title: 'Moped Rentals',
-    lede: 'Choose from our fleet of reliable, easy-to-ride mopeds.',
+/** Copy for the guided tours page. */
+export const TOURS_COPY = {
+    title: 'Moped Tours',
+    lede: 'Guided coastal tours for individuals, couples, and groups.',
     perks: [
-        'Hourly Rentals',
-        'Half-Day Rentals',
-        'Full-Day Rentals',
+        'Guided sightseeing along the coast',
+        'Local restaurant stops',
+        'Historic views and landmarks',
+        'Scenic beach and coastal routes',
+        'Eight automatic 50cc mopeds on every tour',
         'Helmets Included',
-        'Route Recommendations',
-        'Beach Parking Tips',
     ],
 };
+
+export const TOUR_SCHEDULE = 'Friday–Sunday';
 
 /**
  * Opening day: the Saturday of Memorial Day weekend 2027, 9am at the shop.
@@ -42,24 +44,17 @@ export const RENTALS_COPY = {
 export const OPENING_DAY = new Date('2027-05-29T09:00:00-04:00');
 export const OPENING_LABEL = 'Saturday, May 29, 2027';
 
-/** One-off fee to join the community ride. */
-export const CLUB_FEE = 5;
-
 export const CLUB_PERKS = [
     'Added to the riders group chat',
     'The route by email every week',
     'Ride our mopeds or bring your own',
 ];
 
-/** Ten identical mopeds, so one price list covers the whole fleet. */
-export const FLEET_SIZE = 10;
+/** Eight identical mopeds are available for every tour. */
+export const FLEET_SIZE = 8;
 export const FLEET_ENGINE = '50cc';
 
-export const RATES = [
-    { id: '60m', label: '60 mins', price: 60 },
-    { id: 'halfday', label: 'half day', price: 90 },
-    { id: 'day', label: 'full day', price: 175 },
-];
+export const RATES = [{ id: 'tour', label: 'Guided moped tour', price: 175 }];
 
 /** Lowest rate on the board, for "from $X" copy. */
 export const RATE_FROM = Math.min(...RATES.map((r) => r.price));
@@ -160,8 +155,8 @@ export const REASONS = [
         body: 'We grew up on these roads. Ask us where to eat, where to swim, and which stretch to skip at rush hour.',
     },
     {
-        title: 'Rides, not just rentals',
-        body: 'Five dollars puts you in the club for good, on our mopeds or your own bike. Most people come back.',
+        title: 'Tours made local',
+        body: 'See the coast with people who know the best roads, viewpoints, and places to stop.',
     },
     {
         title: 'No fine print',

@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 /**
- * Thin shim over react-router so the site components keep the same call
- * signature they used under Inertia — `href` rather than `to`, and a single
- * `useUrl()` for anything that needs the current location.
+ * A shared link primitive for the Laravel/Inertia and standalone static
+ * builds. Native navigation lets Laravel resolve its Inertia pages, while
+ * Vercel's static-site rewrite returns the React app for the same URLs.
  *
  * Keeping this in one place means the components are not tied to a specific
  * router; swapping again would only touch this file.
@@ -19,9 +19,9 @@ type LinkProps = {
 
 export function Link({ href, className, children, onClick }: LinkProps) {
     return (
-        <RouterLink to={href} className={className} onClick={onClick}>
+        <a href={href} className={className} onClick={onClick}>
             {children}
-        </RouterLink>
+        </a>
     );
 }
 

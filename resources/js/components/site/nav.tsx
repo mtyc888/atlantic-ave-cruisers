@@ -1,7 +1,7 @@
 import { Link, useUrl } from './router';
 import { useEffect, useState } from 'react';
 import badge from './aac-badge.png';
-import { NAV_LINKS, SHOP_MAP_URL } from './data';
+import { NAV_LINKS } from './data';
 import { SiteLink } from './site-link';
 
 export function Nav() {
@@ -50,16 +50,11 @@ export function Nav() {
                 </nav>
 
                 <div className="nav-right">
-                    {/* Walk-in shop, no reservations — send people straight to
-                        directions rather than a booking flow. */}
                     <a
                         className="btn btn-gold"
-                        href={SHOP_MAP_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="/rates"
                     >
-                        Visit the shop
-                        <span className="sr-only"> (opens Google Maps in a new tab)</span>
+                        Explore tours
                     </a>
                     <button
                         className="burger"

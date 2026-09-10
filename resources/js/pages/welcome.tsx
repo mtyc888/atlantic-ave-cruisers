@@ -7,7 +7,7 @@ import { RidesTeaser } from '@/components/site/rides-teaser';
 import { Why } from '@/components/site/why';
 
 export default function Welcome() {
-    useTitle('Moped rentals in Westerly, RI');
+    useTitle('Guided moped tours in Westerly, RI');
 
     return (
         <>

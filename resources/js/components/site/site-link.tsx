@@ -10,7 +10,7 @@ type SiteLinkProps = {
 };
 
 /**
- * Renders an in-page scroll button for "#anchor" hrefs and an Inertia visit
+ * Renders an in-page scroll button for "#anchor" hrefs and a normal page link
  * for everything else, so NAV_LINKS and the footer can mix the two freely.
  */
 export function SiteLink({ href, className, children, onNavigate }: SiteLinkProps) {

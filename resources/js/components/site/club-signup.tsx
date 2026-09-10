@@ -1,13 +1,12 @@
 import type { FormEvent } from 'react';
 import { useState } from 'react';
-import { CLUB_FEE, CLUB_PERKS } from './data';
+import { CLUB_PERKS } from './data';
 
 /**
  * Sign-up for the weekly community ride.
  *
  * Posts to /api/join, which emails the details to the shop inbox. Nothing is
- * stored and nothing is charged — the fee is collected in person, so the
- * copy must not imply an online payment was taken.
+ * stored and nothing is charged.
  */
 
 type Fields = { name: string; email: string; phone: string; website: string };
@@ -65,7 +64,7 @@ export function ClubSignup() {
                     <span className="label">Join the club</span>
                     <h2 className="h2">Ride with us</h2>
                     <p>
-                        Pay the $5 and we’ll add you to the groupchat before the next ride
+                        Sign up and we’ll add you to the group chat before the next ride.
                     </p>
 
                     <ul className="signup-perks">
@@ -83,10 +82,6 @@ export function ClubSignup() {
                         </div>
                     ) : (
                         <form onSubmit={onSubmit} noValidate>
-                            <div className="signup-price">
-                                <b>${CLUB_FEE}</b>
-                            </div>
-
                             <label>
                                 <span>Name</span>
                                 <input
@@ -154,7 +149,7 @@ export function ClubSignup() {
                             {errors.form && <p className="signup-error">{errors.form}</p>}
 
                             <p className="signup-fine">
-                                The ${CLUB_FEE} is paid once. Riders under 18 need a parent along.
+                                Riders under 18 need a parent along.
                             </p>
                         </form>
                     )}

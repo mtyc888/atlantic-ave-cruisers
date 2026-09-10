@@ -5,10 +5,10 @@ import { CircleMarker, MapContainer, Polyline, TileLayer, Tooltip, useMap } from
 import { SHOP, STOPS } from './data';
 import { ROUTE_TO } from './routes';
 
-/** CARTO Dark Matter — sits inside the navy section without a key. */
-const TILE_URL = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+/** OpenStreetMap's standard, community-maintained map tiles. */
+const TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 const TILE_ATTRIBUTION =
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
 const ALL_POINTS = L.latLngBounds([
     [SHOP.lat, SHOP.lng],
@@ -67,7 +67,7 @@ export function RidesMap({ active, onSelect }: RidesMapProps) {
             scrollWheelZoom={false}
             attributionControl
         >
-            <TileLayer url={TILE_URL} attribution={TILE_ATTRIBUTION} subdomains="abcd" />
+            <TileLayer url={TILE_URL} attribution={TILE_ATTRIBUTION} />
 
             {/* The run for the selected stop, following real roads. */}
             {route && (

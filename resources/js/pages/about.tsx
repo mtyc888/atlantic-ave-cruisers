@@ -1,6 +1,6 @@
 import { useTitle } from '@/components/site/use-title';
 import { About } from '@/components/site/about';
-import { SHOP_MAP_URL } from '@/components/site/data';
+import { TOUR_SCHEDULE } from '@/components/site/data';
 import { Founder } from '@/components/site/founder';
 
 export default function AboutPage() {
@@ -22,24 +22,12 @@ export default function AboutPage() {
                         <dl className="contact-grid" data-reveal>
                             <div>
                                 <dt>Address</dt>
-                                <dd>
-                                    <a
-                                        href={SHOP_MAP_URL}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        140 Atlantic Ave
-                                        <br />
-                                        Westerly, RI 02891
-                                    </a>
-                                </dd>
+                                <dd>[TBD]</dd>
                             </div>
                             <div>
                                 <dt>Hours</dt>
                                 <dd>
-                                    Daily 9am to 6pm
-                                    <br />
-                                    May through September
+                                    {TOUR_SCHEDULE}
                                 </dd>
                             </div>
                             <div>

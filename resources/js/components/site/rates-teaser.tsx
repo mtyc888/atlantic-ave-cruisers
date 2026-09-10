@@ -4,15 +4,15 @@ import { FLEET_ENGINE, FLEET_SIZE, RATES } from './data';
 
 export function RatesTeaser() {
     return (
-        <section className="teaser teaser-cream" id="rentals">
+        <section className="teaser teaser-cream" id="tours">
             <div className="wrap">
                 <div className="teaser-head" data-reveal>
                     <div>
-                        <span className="label">Rentals</span>
-                        <h2 className="h2">By the hour or all day</h2>
+                        <span className="label">Moped tours</span>
+                        <h2 className="h2">See the coast by moped</h2>
                     </div>
                     <Link className="teaser-more" href="/rates">
-                        See all rates
+                        View tour details
                     </Link>
                 </div>
 
@@ -34,7 +34,7 @@ export function RatesTeaser() {
                 </ul>
 
                 <p className="rate-list-note" data-reveal>
-                    {FLEET_SIZE} mopeds in the fleet, all {FLEET_ENGINE} and automatic.
+                    {FLEET_SIZE} automatic {FLEET_ENGINE} mopeds on every tour. Helmets included.
                 </p>
             </div>
         </section>

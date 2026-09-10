@@ -14,9 +14,9 @@ export function Rides() {
                     <div>
                         <div className="label">Community rides</div>
                         <h2 className="h2">
-                            Every week,
+                            Friday through Sunday,
                             <br />
-                            somewhere on this coast
+                            May through September
                         </h2>
                     </div>
                     <p>

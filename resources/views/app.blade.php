@@ -8,7 +8,7 @@
              these a crawler has nothing to read and falls back to the
              favicon, which is why the Laravel mark used to show up. --}}
         @php
-            $siteDescription = 'Moped rentals and weekly community rides on the Rhode Island shoreline. 140 Atlantic Ave, Westerly RI.';
+            $siteDescription = 'Guided 50cc moped tours and community rides on the Rhode Island shoreline.';
         @endphp
         <meta name="description" content="{{ $siteDescription }}">
 

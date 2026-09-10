@@ -6,6 +6,7 @@ import AppLayout from '@/layouts/app-layout';
 import AuthLayout from '@/layouts/auth-layout';
 import SettingsLayout from '@/layouts/settings/layout';
 import SiteLayout from '@/layouts/site-layout';
+import { BrowserRouter } from 'react-router-dom';
 
 const appName = 'Atlantic Ave Cruisers';
 
@@ -29,10 +30,12 @@ createInertiaApp({
     strictMode: true,
     withApp(app) {
         return (
-            <TooltipProvider delayDuration={0}>
-                {app}
-                <Toaster />
-            </TooltipProvider>
+            <BrowserRouter>
+                <TooltipProvider delayDuration={0}>
+                    {app}
+                    <Toaster />
+                </TooltipProvider>
+            </BrowserRouter>
         );
     },
     progress: {

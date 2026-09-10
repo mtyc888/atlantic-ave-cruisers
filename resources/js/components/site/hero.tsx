@@ -31,19 +31,19 @@ export function Hero() {
         <section className="hero" id="top">
             <div className="wrap hero-in">
                 <div className="hero-copy">
-                    <div className="label">Moped rentals · Westerly, Rhode Island</div>
+                    <div className="label">Guided moped tours · Westerly, Rhode Island</div>
                     <h1>
-                        Ride. Rent.
+                        Ride. Tour.
                         <br />
                         Explore. <span>Connect.</span>
                     </h1>
                     <p>
-                        Hourly, half day, and full day rentals on the Rhode Island shoreline.
-                        Helmets included. Community ride every week.
+                        Guided sightseeing tours with restaurant stops and historic coastal views.
+                        Automatic 50cc mopeds and helmets included.
                     </p>
                     <div className="hero-cta">
                         <Link className="btn btn-gold" href="/rates">
-                            Rent a moped
+                            Explore tours
                         </Link>
                         <Link className="btn btn-outline" href="/join">
                             Join a ride
@@ -56,7 +56,7 @@ export function Hero() {
                     </div>
                 </div>
             </div>
-            <button className="hero-scroll" onClick={() => scrollToSection('#rentals')}>
+            <button className="hero-scroll" onClick={() => scrollToSection('#tours')}>
                 Scroll
                 <i />
             </button>

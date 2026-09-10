@@ -1,5 +1,5 @@
 import badge from './aac-badge.png';
-import { SHOP_MAP_URL } from './data';
+import { TOUR_SCHEDULE } from './data';
 import { SiteLink } from './site-link';
 
 export function Footer() {
@@ -16,23 +16,15 @@ export function Footer() {
                             </span>
                         </div>
                         <p className="foot-blurb">
-                            Moped rentals and weekly community rides on the Rhode Island coast.
+                            Guided moped tours and community rides on the Rhode Island coast.
                         </p>
                     </div>
 
                     <div>
                         <h4>Visit</h4>
-                        <p>
-                            <a href={SHOP_MAP_URL} target="_blank" rel="noopener noreferrer">
-                                140 Atlantic Ave
-                                <br />
-                                Westerly, RI 02891
-                            </a>
-                        </p>
+                        <p>[TBD]</p>
                         <p className="foot-dim">
-                            Daily 9am to 6pm
-                            <br />
-                            May through September
+                            {TOUR_SCHEDULE}
                         </p>
                     </div>
 
@@ -43,7 +35,7 @@ export function Footer() {
                                 <a href="mailto:atlantic.ave.cruisers@gmail.com">atlantic.ave.cruisers@gmail.com</a>
                             </li>
                             <li>
-                                <SiteLink href="/rates">Rates</SiteLink>
+                                <SiteLink href="/rates">Moped Tours</SiteLink>
                             </li>
                             <li>
                                 <SiteLink href="/join">Join the club</SiteLink>

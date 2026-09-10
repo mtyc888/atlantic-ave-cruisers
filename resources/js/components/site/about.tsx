@@ -19,7 +19,7 @@ export function About() {
                         Launched in 2025 by Lucas Santos, Atlantic Ave Cruisers started as an idea
                         inspired by a love for Westerly, Rhode Island, the beach, and the simple joy
                         of riding a moped along Atlantic Avenue. What started as a vision is now
-                        coming to life — bringing a unique moped rental experience to one of Rhode
+                        coming to life — bringing guided moped tours to one of Rhode
                         Island's most iconic coastal destinations.
                     </p>
 
@@ -44,19 +44,19 @@ export function About() {
                         to take in a scenic ocean view, or simply keep cruising and enjoy the ride.
                     </p>
 
-                    <h2 data-reveal>More Than a Rental</h2>
+                    <h2 data-reveal>More Than a Tour</h2>
 
                     <p data-reveal>
-                        Atlantic Ave Cruisers is about more than simply renting a moped. It's about
-                        creating an experience.
+                        Atlantic Ave Cruisers is about more than simply riding a moped. It's about
+                        sharing an experience.
                     </p>
 
                     <p data-reveal>
-                        We offer hourly, half-day, and full-day rentals, giving riders the freedom
-                        to explore Westerly at their own pace. Whether you're visiting for the
-                        weekend, spending the summer at the beach, or you're a local looking for
-                        something different to do, our mopeds are an easy and exciting way to
-                        experience the area.
+                        Our guided tours take riders through Westerly's coastal roads, scenic views,
+                        and local restaurant stops. Whether you're visiting for the weekend,
+                        spending the summer at the beach, or you're a local looking for something
+                        different to do, our mopeds are an easy and exciting way to experience the
+                        area.
                     </p>
 
                     <p data-reveal>

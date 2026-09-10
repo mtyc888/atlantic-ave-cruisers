@@ -66,7 +66,7 @@ export function Founder() {
                     <p data-reveal>Atlantic Ave Cruisers is that idea coming to life.</p>
 
                     <p data-reveal>
-                        The goal isn't just to rent mopeds. It's to create an experience that
+                        The goal isn't just to lead moped tours. It's to create an experience that
                         becomes part of the Westerly summer.
                     </p>
 
@@ -94,7 +94,7 @@ export function Founder() {
 
                     <p data-reveal>
                         And through our Atlantic Ave Cruisers community rides, we hope to build
-                        something bigger than a rental business — a community of people who simply
+                        something bigger than a tour business — a community of people who simply
                         love riding, the beach, and the Rhode Island summer.
                     </p>
 
