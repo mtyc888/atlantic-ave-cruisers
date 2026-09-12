@@ -1,13 +1,6 @@
-/**
- * Rental agreement and liability waiver, reproduced verbatim from the copy
- * supplied by the client. The underscore runs in the source document are
- * rendered as ruled blanks; no wording has been changed.
- *
- * This is legal text — do not reword, summarise or "tidy" it. Any change
- * should come from the client.
- */
+import type { ReactNode } from 'react';
 
-const RENTER_FIELDS = [
+const PARTICIPANT_FIELDS = [
     'Full Name',
     'Date of Birth',
     'Address',
@@ -19,9 +12,61 @@ const RENTER_FIELDS = [
     'Expiration Date',
 ];
 
-const VEHICLE_FIELDS = ['Moped Make/Model', 'Year', 'Fuel Level'];
+const SAFETY_REQUIREMENTS = [
+    'Wear a helmet and all required safety equipment throughout the tour.',
+    'Follow all Rhode Island traffic laws and applicable local regulations.',
+    'Follow the instructions and directions of the Atlantic Ave Cruisers tour guide.',
+    'Maintain a safe speed and appropriate distance from other riders.',
+    'Remain with the designated tour group.',
+    'Operate the moped responsibly and safely at all times.',
+    'Never operate the moped while under the influence of alcohol, drugs, or any substance that may impair my ability to operate it safely.',
+    'Immediately notify the tour guide of any accident, injury, mechanical issue, or unsafe condition.',
+    'Stop operating the moped immediately if instructed to do so by the tour guide.',
+    'Conduct myself in a manner that does not endanger myself, other participants, pedestrians, motorists, or members of the public.',
+];
 
-const EMERGENCY_FIELDS = ['Name', 'Relationship', 'Phone Number'];
+const TOUR_RISKS = [
+    'Falls or loss of control',
+    'Motor vehicle collisions',
+    'Collisions with other riders, pedestrians, objects, or property',
+    'Uneven, wet, slippery, or damaged road surfaces',
+    'Traffic and actions of other motorists',
+    'Weather and environmental conditions',
+    'Mechanical or equipment failure',
+    'Personal injury or illness',
+    'Property damage',
+    'Serious bodily injury or death',
+];
+
+const EQUIPMENT_RESPONSIBILITIES = [
+    'Operate the moped only as instructed by Atlantic Ave Cruisers.',
+    'Not modify, tamper with, or intentionally misuse the moped or equipment.',
+    'Immediately report any damage, malfunction, or safety concern to the tour guide.',
+    'Not allow another person to operate the moped assigned to me.',
+    'Return the moped and all provided equipment at the conclusion of the tour in substantially the same condition in which they were provided, subject to normal wear and tear.',
+];
+
+const PROHIBITED_CONDUCT = [
+    'Operate the moped while impaired by alcohol, drugs, or any other substance.',
+    'Engage in racing, stunts, wheelies, reckless riding, or other unsafe behavior.',
+    'Pass the tour guide or designated lead rider unless instructed to do so.',
+    'Intentionally separate from the tour group without authorization.',
+    'Allow an unauthorized person to operate the moped.',
+    'Use the moped for any purpose outside the designated tour.',
+    'Disobey reasonable safety instructions from the tour guide.',
+    'Engage in conduct that creates an unreasonable risk to themselves or others.',
+    'Violate any applicable federal, state, or local law.',
+];
+
+const PARTICIPANT_ACKNOWLEDGMENTS = [
+    'I have read and understand this Guided Moped Tour Waiver & Safety Acknowledgment.',
+    'I understand that moped riding involves inherent risks, including the possibility of serious injury or death.',
+    'I voluntarily choose to participate in the Atlantic Ave Cruisers guided moped tour.',
+    'I agree to follow all applicable laws and all reasonable instructions provided by Atlantic Ave Cruisers and its tour guides.',
+    'I understand that Atlantic Ave Cruisers may remove me from the tour if I violate safety rules or create a safety concern.',
+    'I have had the opportunity to ask questions regarding the tour, moped operation, and safety requirements.',
+    'I understand the terms of this waiver and voluntarily agree to them.',
+];
 
 function Field({ label }: { label: string }) {
     return (
@@ -32,194 +77,247 @@ function Field({ label }: { label: string }) {
     );
 }
 
+function List({
+    items,
+    ordered = false,
+}: {
+    items: string[];
+    ordered?: boolean;
+}) {
+    const ListTag = ordered ? 'ol' : 'ul';
+
+    return (
+        <ListTag>
+            {items.map((item) => (
+                <li key={item}>{item}</li>
+            ))}
+        </ListTag>
+    );
+}
+
+function WaiverSection({
+    number,
+    title,
+    children,
+}: {
+    number: number;
+    title: string;
+    children: ReactNode;
+}) {
+    return (
+        <section className="wv-block">
+            <h2>
+                {number}. {title}
+            </h2>
+            {children}
+        </section>
+    );
+}
+
 export function Waiver() {
     return (
         <article className="waiver">
             <header className="wv-head">
                 <h1>Atlantic Ave Cruisers</h1>
                 <p className="wv-sub">
-                    Moped Rental Agreement, Liability Waiver &amp; Safety Acknowledgment
+                    Guided Moped Tour Waiver &amp; Safety Acknowledgment
                 </p>
-                <div className="wv-date">
-                    <Field label="Rental Date" />
+                <div className="wv-date wv-fields">
+                    <Field label="Tour Date" />
+                    <Field label="Tour Time" />
                 </div>
             </header>
 
             <section className="wv-block">
-                <h2>Renter Information</h2>
+                <h2>Participant Information</h2>
                 <div className="wv-fields">
-                    {RENTER_FIELDS.map((f) => (
-                        <Field key={f} label={f} />
+                    {PARTICIPANT_FIELDS.map((field) => (
+                        <Field key={field} label={field} />
                     ))}
                 </div>
             </section>
 
-            <section className="wv-block">
-                <h2>
-                    <b>1.</b> Eligibility to Operate a Moped
-                </h2>
+            <WaiverSection number={1} title="Eligibility to Participate">
                 <p>
-                    I certify that I am legally permitted to operate a moped under Rhode Island law
-                    and that I possess a valid driver’s license or other required authorization.
+                    I certify that I am legally permitted to operate a moped
+                    under applicable Rhode Island law and that I possess a valid
+                    driver's license or other legally required authorization.
                 </p>
                 <p>
-                    I understand that Atlantic Ave Cruisers may refuse rental service if I fail to
-                    provide proper identification, fail to meet legal requirements, appear impaired,
-                    or fail to follow safety requirements.
+                    I understand that Atlantic Ave Cruisers may refuse
+                    participation if I fail to meet applicable legal
+                    requirements, fail to provide required identification,
+                    appear impaired, or fail to comply with the safety
+                    requirements of the tour.
                 </p>
-                <p>I certify that I am physically capable of safely operating a 50cc moped.</p>
-            </section>
+                <p>
+                    I certify that I am physically and mentally capable of
+                    safely operating a 50cc moped and participating in a guided
+                    moped tour.
+                </p>
+            </WaiverSection>
 
-            <section className="wv-block">
-                <h2>
-                    <b>2.</b> Rental Vehicle Information
-                </h2>
-                <div className="wv-fields">
-                    {VEHICLE_FIELDS.map((f) => (
-                        <Field key={f} label={f} />
-                    ))}
-                </div>
+            <WaiverSection number={2} title="Guided Tour Participation">
                 <p>
-                    I acknowledge that I have inspected the moped and accept it in its current
-                    condition. I agree to notify Atlantic Ave Cruisers of any existing damage before
-                    operating the vehicle.
+                    I understand that Atlantic Ave Cruisers provides guided,
+                    controlled moped tours in which participants operate mopeds
+                    as part of an organized group led by an Atlantic Ave
+                    Cruisers tour guide.
                 </p>
-            </section>
-
-            <section className="wv-block">
-                <h2>
-                    <b>3.</b> Safety Requirements
-                </h2>
                 <p>
-                    I acknowledge that operating a moped involves risks, including but not limited
-                    to falls, collisions, property damage, injury, and other hazards associated with
-                    riding.
+                    I agree to remain with the designated tour group and follow
+                    all reasonable instructions provided by the tour guide
+                    before and during the tour.
+                </p>
+                <p>
+                    I understand that Atlantic Ave Cruisers may determine the
+                    route, pace, stops, formation, and other operational aspects
+                    of the tour for safety and logistical purposes.
+                </p>
+                <p>
+                    I agree not to leave the designated tour route or group
+                    without permission from the tour guide, except when
+                    necessary due to an emergency.
+                </p>
+            </WaiverSection>
+
+            <WaiverSection number={3} title="Safety Requirements">
+                <p>
+                    I acknowledge that riding a moped involves inherent risks,
+                    including but not limited to falls, collisions, traffic
+                    hazards, road conditions, weather conditions, mechanical
+                    issues, property damage, serious injury, and death.
                 </p>
                 <p>I agree to:</p>
-                <ul>
-                    <li>
-                        Wear a helmet and any required safety equipment while operating the moped.
-                    </li>
-                    <li>Follow all Rhode Island traffic laws.</li>
-                    <li>Operate the moped in a safe and responsible manner.</li>
-                    <li>
-                        Never operate the moped while under the influence of alcohol, drugs, or any
-                        substance that may impair my ability to ride safely.
-                    </li>
-                    <li>
-                        Allow only authorized renters listed on this agreement to operate the moped.
-                    </li>
-                    <li>Return the moped at the agreed-upon time.</li>
-                </ul>
-            </section>
+                <List items={SAFETY_REQUIREMENTS} />
+            </WaiverSection>
 
-            <section className="wv-block">
-                <h2>
-                    <b>4.</b> Assumption of Risk
-                </h2>
+            <WaiverSection number={4} title="Assumption of Risk">
                 <p>
-                    I understand that riding a moped carries inherent risks. By renting and
-                    operating a moped from Atlantic Ave Cruisers, I voluntarily assume
-                    responsibility for the risks associated with operating the vehicle.
+                    I understand that participation in a guided moped tour
+                    involves inherent and foreseeable risks that cannot be
+                    completely eliminated.
+                </p>
+                <p>These risks may include, but are not limited to:</p>
+                <List items={TOUR_RISKS} />
+                <p>
+                    I voluntarily choose to participate in the guided moped tour
+                    and knowingly assume the risks associated with participating
+                    in the activity.
                 </p>
                 <p>
-                    I understand that Atlantic Ave Cruisers provides properly maintained rental
-                    equipment but cannot control how I operate the moped or the actions of other
-                    drivers, pedestrians, or road conditions.
+                    I understand that following the tour guide and safety
+                    instructions can reduce, but cannot completely eliminate,
+                    these risks.
                 </p>
-            </section>
+            </WaiverSection>
 
-            <section className="wv-block">
-                <h2>
-                    <b>5.</b> Release of Liability
-                </h2>
+            <WaiverSection number={5} title="Release of Liability">
                 <p>
-                    To the fullest extent permitted by Rhode Island law, I release and hold harmless
-                    Atlantic Ave Cruisers, its owners, employees, agents, and representatives from
-                    claims, liabilities, damages, losses, or expenses arising from my use or
-                    operation of the rented moped, except where prohibited by law.
+                    To the fullest extent permitted by Rhode Island law, I
+                    release and agree to hold harmless Atlantic Ave Cruisers,
+                    its owners, members, employees, tour guides, agents,
+                    representatives, affiliates, and contractors from claims,
+                    liabilities, damages, losses, costs, or expenses arising out
+                    of or related to my participation in the guided moped tour,
+                    including claims arising from the inherent risks of moped
+                    riding.
                 </p>
-            </section>
-
-            <section className="wv-block">
-                <h2>
-                    <b>6.</b> Damage Responsibility
-                </h2>
                 <p>
-                    I agree to return the moped in the same condition as when received, except for
-                    normal wear and tear.
+                    This release does not apply to conduct for which liability
+                    cannot legally be waived or released under applicable law.
                 </p>
-                <p>I accept responsibility for:</p>
-                <ul>
-                    <li>
-                        Damage caused by improper operation, negligence, misuse, or violation of
-                        rental rules.
-                    </li>
-                    <li>Loss of equipment provided with the rental.</li>
-                    <li>Damage caused by unauthorized operators.</li>
-                    <li>
-                        Any applicable charges related to late return, damage, or missing equipment.
-                    </li>
-                </ul>
-            </section>
+            </WaiverSection>
 
-            <section className="wv-block">
-                <h2>
-                    <b>7.</b> Prohibited Use
-                </h2>
-                <p>The moped may not be used:</p>
-                <ul>
-                    <li>By anyone not listed as an authorized rider.</li>
-                    <li>For racing, reckless riding, or unsafe behavior.</li>
-                    <li>While impaired by alcohol or drugs.</li>
-                    <li>Off-road or in prohibited areas.</li>
-                    <li>In any manner that violates Rhode Island law.</li>
-                </ul>
-            </section>
-
-            <section className="wv-block">
-                <h2>
-                    <b>8.</b> Personal Belongings
-                </h2>
+            <WaiverSection
+                number={6}
+                title="Moped and Equipment Responsibility"
+            >
                 <p>
-                    Atlantic Ave Cruisers is not responsible for lost, stolen, or damaged personal
-                    belongings left with the vehicle.
+                    I acknowledge that the moped and safety equipment provided
+                    to me by Atlantic Ave Cruisers are intended to be used
+                    solely for participation in the designated guided tour.
                 </p>
-            </section>
+                <p>I agree to:</p>
+                <List items={EQUIPMENT_RESPONSIBILITIES} />
+                <p>
+                    I understand that I may be financially responsible for
+                    damage caused by intentional misuse, reckless conduct, or
+                    negligent operation, to the extent permitted by law.
+                </p>
+            </WaiverSection>
 
-            <section className="wv-block">
-                <h2>
-                    <b>9.</b> Emergency Contact
-                </h2>
+            <WaiverSection number={7} title="Prohibited Conduct">
+                <p>Participants may not:</p>
+                <List items={PROHIBITED_CONDUCT} />
+                <p>
+                    Atlantic Ave Cruisers reserves the right to end a
+                    participant's tour immediately if the participant violates
+                    safety rules, appears impaired, operates the moped
+                    recklessly, or otherwise creates a safety concern.
+                </p>
+            </WaiverSection>
+
+            <WaiverSection number={8} title="Weather and Tour Conditions">
+                <p>
+                    I understand that outdoor tours are subject to weather,
+                    traffic, road conditions, and other circumstances beyond the
+                    control of Atlantic Ave Cruisers.
+                </p>
+                <p>
+                    Atlantic Ave Cruisers may modify, delay, shorten, reroute,
+                    or cancel a tour when reasonably necessary for safety or
+                    operational reasons.
+                </p>
+                <p>
+                    I understand that conditions may change during the tour and
+                    agree to follow the instructions of the tour guide regarding
+                    any changes to the tour.
+                </p>
+            </WaiverSection>
+
+            <WaiverSection number={9} title="Personal Belongings">
+                <p>
+                    I understand that Atlantic Ave Cruisers is not responsible
+                    for lost, stolen, or damaged personal belongings brought to
+                    or during the tour.
+                </p>
+            </WaiverSection>
+
+            <WaiverSection number={10} title="Emergency Contact">
                 <div className="wv-fields">
-                    {EMERGENCY_FIELDS.map((f) => (
-                        <Field key={f} label={f} />
-                    ))}
+                    <Field label="Name" />
+                    <Field label="Relationship" />
+                    <Field label="Phone Number" />
                 </div>
-            </section>
+            </WaiverSection>
 
-            <section className="wv-block">
-                <h2>
-                    <b>10.</b> Customer Acknowledgment
-                </h2>
+            <WaiverSection number={11} title="Emergency Medical Authorization">
                 <p>
-                    I have read and understand this agreement. I have had the opportunity to ask
-                    questions regarding the rental, operation, and safety requirements of the moped.
+                    In the event of an emergency, I authorize Atlantic Ave
+                    Cruisers personnel to contact emergency medical services on
+                    my behalf.
                 </p>
                 <p>
-                    I voluntarily agree to the terms of this agreement and understand the
-                    responsibilities involved in renting and operating a moped.
+                    I understand that Atlantic Ave Cruisers and its
+                    representatives are not responsible for medical expenses
+                    incurred as a result of my participation in the tour.
                 </p>
-            </section>
+            </WaiverSection>
 
-            <section className="wv-sign">
+            <WaiverSection number={12} title="Participant Acknowledgment">
+                <p>By signing below, I acknowledge that:</p>
+                <List items={PARTICIPANT_ACKNOWLEDGMENTS} ordered />
                 <div className="wv-fields">
-                    <Field label="Renter Signature" />
+                    <Field label="Participant Signature" />
                     <Field label="Date" />
                 </div>
+            </WaiverSection>
 
-                <h3>Atlantic Ave Cruisers Representative:</h3>
+            <section className="wv-sign">
+                <h3>Atlantic Ave Cruisers Representative</h3>
                 <div className="wv-fields">
+                    <Field label="Name" />
                     <Field label="Signature" />
                     <Field label="Date" />
                 </div>

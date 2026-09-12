@@ -43,40 +43,6 @@ export function Founder() {
                         Island summer on the coast so special.
                     </p>
 
-                    <h2 data-reveal>The Idea Behind Atlantic Ave Cruisers</h2>
-
-                    <p data-reveal>
-                        Atlantic Ave Cruisers was launched in 2025, but the idea started long before
-                        that.
-                    </p>
-
-                    <p data-reveal>
-                        For Lucas, Atlantic Avenue represents the feeling of a true Rhode Island
-                        summer — the ocean breeze, sunshine, beach traffic, restaurants, friends,
-                        family, and the freedom of cruising along the coast on two wheels.
-                    </p>
-
-                    <p data-reveal>
-                        Having ridden along Atlantic Avenue himself, Lucas experienced the smiles
-                        and excitement that come from hopping on a moped and simply enjoying the
-                        ride. He wanted to create a business that could give locals and visitors the
-                        opportunity to experience that same feeling.
-                    </p>
-
-                    <p data-reveal>Atlantic Ave Cruisers is that idea coming to life.</p>
-
-                    <p data-reveal>
-                        The goal isn't just to lead moped tours. It's to create an experience that
-                        becomes part of the Westerly summer.
-                    </p>
-
-                    <p data-reveal>
-                        Whether you're a tourist visiting the area for the first time, a local
-                        looking for something fun to do, or a group of friends looking to spend a
-                        summer afternoon together, Atlantic Ave Cruisers gives people another way to
-                        explore Westerly and enjoy everything the coastline has to offer.
-                    </p>
-
                     <h2 data-reveal>Building Something for Westerly</h2>
 
                     <p data-reveal>
