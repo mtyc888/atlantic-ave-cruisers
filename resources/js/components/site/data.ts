@@ -29,7 +29,6 @@ export const TOURS_COPY = {
         'Local restaurant stops',
         'Historic views and landmarks',
         'Scenic beach and coastal routes',
-        'Eight automatic 50cc mopeds on every tour',
         'Helmets Included',
     ],
 };
